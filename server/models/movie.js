@@ -22,6 +22,21 @@ const Movie = {
       .get(discoverUrl)
       .then((response) => response.data.results)
       .catch((error) => ({ error: error }))
+  },
+
+  getTrailerVideo: (movieId) => {
+    const trailerVideoUrl =`/movie/${movieId}/videos`
+      return axios
+      .get(trailerVideoUrl)
+      .then((response) => {
+        if (response.data.results[0].key) {
+          const trailerUrl = new URL('https://www.youtube.com/watch')
+          trailerUrl.searchParams.set('v', response.data.results[0].key)
+          return decodeURIComponent(trailerUrl.toString())
+        }
+        return ""
+      })
+      .catch((error) => (console.log(error)))
   }
 }
 

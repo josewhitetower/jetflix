@@ -38,7 +38,13 @@ const MovieType = new GraphQLObjectType({
     runtime: {
       type: GraphQLString,
       resolve: (parent) => {
-        return runtimeConvert(parent.runtime)
+        return parent.runtime ? runtimeConvert(parent.runtime) : ""
+      }
+    },
+    trailer: {
+      type:  GraphQLString ,
+      resolve: (parent) => {
+        return Movie.getTrailerVideo(parent.id)
       }
     },
     homepage: { type: GraphQLString },
