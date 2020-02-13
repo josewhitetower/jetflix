@@ -10,6 +10,15 @@ const {
   GraphQLInt
 } = graphql
 
+const findGenres = (parent) => {
+  const { genre_ids, genres } = parent
+  if (genres) {
+      return genres.map(genre => Genre.findById(genre.id))
+  }
+  return genre_ids.map(genreId => Genre.findById(genreId))
+
+}
+
 const MovieType = new GraphQLObjectType({
   name: 'Movie',
   fields: () => ({
@@ -22,11 +31,16 @@ const MovieType = new GraphQLObjectType({
     runtime: { type: GraphQLInt },
     homepage: { type: GraphQLString },
     original_language: { type: GraphQLString },
+    genre_ids: {
+      type: new GraphQLList(GenreType),
+      resolve: (parent, args) => {
+        return findGenres(parent)
+      }
+    },
     genres: {
       type: new GraphQLList(GenreType),
       resolve: (parent, args) => {
-        const genres = parent.genres.map((genre) => Genre.findById(genre.id))
-        return genres
+        return findGenres(parent)
       }
     }
   })
