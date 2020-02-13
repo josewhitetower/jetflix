@@ -25,8 +25,8 @@ const Movie = {
   },
 
   getTrailerVideo: (movieId) => {
-    const trailerVideoUrl =`/movie/${movieId}/videos`
-      return axios
+    const trailerVideoUrl = `/movie/${movieId}/videos`
+    return axios
       .get(trailerVideoUrl)
       .then((response) => {
         if (response.data.results[0] && response.data.results[0].key) {
@@ -34,19 +34,29 @@ const Movie = {
           trailerUrl.searchParams.set('v', response.data.results[0].key)
           return decodeURIComponent(trailerUrl.toString())
         }
-        return ""
+        return ''
       })
-      .catch((error) => (console.log(error)))
+      .catch((error) => console.log(error))
   },
 
-  getCast:(movieId) => {
-    const creditsUrl =`/movie/${movieId}/credits`
-      return axios
+  getCast: (movieId) => {
+    const creditsUrl = `/movie/${movieId}/credits`
+    return axios
       .get(creditsUrl)
       .then((response) => {
-        return response.data.cast
+        return response.data.cast.filter((cast) => cast.profile_path)
       })
-      .catch((error) => (console.log(error)))
+      .catch((error) => console.log(error))
+  },
+
+  search: (query) => {
+    const creditsUrl = `search/movie?query=${query}`
+    return axios
+      .get(creditsUrl)
+      .then((response) => {
+        return response.data.results
+      })
+      .catch((error) => console.log(error))
   }
 }
 

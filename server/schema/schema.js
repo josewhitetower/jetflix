@@ -13,13 +13,13 @@ const {
 const findGenres = (parent) => {
   const { genre_ids, genres } = parent
   if (genres) {
-      return genres.map(genre => Genre.findById(genre.id))
+    return genres.map((genre) => Genre.findById(genre.id))
   }
-  return genre_ids.map(genreId => Genre.findById(genreId))
+  return genre_ids.map((genreId) => Genre.findById(genreId))
 }
 
 const runtimeConvert = (runtime) => {
-  const hours = (runtime/60)
+  const hours = runtime / 60
   const rHours = Math.floor(hours)
   const minutes = (hours - rHours) * 60
   const rMinutes = Math.floor(minutes)
@@ -30,7 +30,7 @@ const MovieType = new GraphQLObjectType({
   name: 'Movie',
   fields: () => ({
     id: { type: GraphQLID },
-    original_title: { type: GraphQLString },
+    title: { type: GraphQLString },
     overview: { type: GraphQLString },
     poster_path: { type: GraphQLString },
     tagline: { type: GraphQLString },
@@ -38,17 +38,17 @@ const MovieType = new GraphQLObjectType({
     runtime: {
       type: GraphQLString,
       resolve: (parent) => {
-        return parent.runtime ? runtimeConvert(parent.runtime) : ""
+        return parent.runtime ? runtimeConvert(parent.runtime) : ''
       }
     },
     trailer: {
-      type:  GraphQLString ,
+      type: GraphQLString,
       resolve: (parent) => {
         return Movie.getTrailerVideo(parent.id)
       }
     },
     cast: {
-      type: new GraphQLList(PersonType) ,
+      type: new GraphQLList(PersonType),
       resolve: (parent) => {
         return Movie.getCast(parent.id)
       }
@@ -87,11 +87,11 @@ const GenreType = new GraphQLObjectType({
 const PersonType = new GraphQLObjectType({
   name: 'Person',
   fields: () => ({
-    id: { type: GraphQLID},
-    cast_id: { type: GraphQLID},
-    character: { type: GraphQLString},
-    name: { type: GraphQLString},
-    profile_path: { type: GraphQLString},
+    id: { type: GraphQLID },
+    cast_id: { type: GraphQLID },
+    character: { type: GraphQLString },
+    name: { type: GraphQLString },
+    profile_path: { type: GraphQLString }
   })
 })
 
@@ -126,6 +126,15 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve: (parent, args) => {
         return Genre.findById(args.id)
+      }
+    },
+    search: {
+      type: new GraphQLList(MovieType),
+      args: {
+        query: { type: GraphQLID }
+      },
+      resolve: (parent, args) => {
+        return Movie.search(args.query)
       }
     }
   }
