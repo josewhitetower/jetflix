@@ -47,6 +47,12 @@ const MovieType = new GraphQLObjectType({
         return Movie.getTrailerVideo(parent.id)
       }
     },
+    cast: {
+      type: new GraphQLList(PersonType) ,
+      resolve: (parent) => {
+        return Movie.getCast(parent.id)
+      }
+    },
     homepage: { type: GraphQLString },
     original_language: { type: GraphQLString },
     genre_ids: {
@@ -75,6 +81,17 @@ const GenreType = new GraphQLObjectType({
         return Movie.findByGenreId(parent.id)
       }
     }
+  })
+})
+
+const PersonType = new GraphQLObjectType({
+  name: 'Person',
+  fields: () => ({
+    id: { type: GraphQLID},
+    cast_id: { type: GraphQLID},
+    character: { type: GraphQLString},
+    name: { type: GraphQLString},
+    profile_path: { type: GraphQLString},
   })
 })
 

@@ -29,12 +29,22 @@ const Movie = {
       return axios
       .get(trailerVideoUrl)
       .then((response) => {
-        if (response.data.results[0].key) {
+        if (response.data.results[0] && response.data.results[0].key) {
           const trailerUrl = new URL('https://www.youtube.com/watch')
           trailerUrl.searchParams.set('v', response.data.results[0].key)
           return decodeURIComponent(trailerUrl.toString())
         }
         return ""
+      })
+      .catch((error) => (console.log(error)))
+  },
+
+  getCast:(movieId) => {
+    const creditsUrl =`/movie/${movieId}/credits`
+      return axios
+      .get(creditsUrl)
+      .then((response) => {
+        return response.data.cast
       })
       .catch((error) => (console.log(error)))
   }
