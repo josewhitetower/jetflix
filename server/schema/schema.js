@@ -16,7 +16,14 @@ const findGenres = (parent) => {
       return genres.map(genre => Genre.findById(genre.id))
   }
   return genre_ids.map(genreId => Genre.findById(genreId))
+}
 
+const runtimeConvert = (runtime) => {
+  const hours = (runtime/60)
+  const rHours = Math.floor(hours)
+  const minutes = (hours - rHours) * 60
+  const rMinutes = Math.floor(minutes)
+  return `${rHours}:${rMinutes}`
 }
 
 const MovieType = new GraphQLObjectType({
@@ -28,7 +35,12 @@ const MovieType = new GraphQLObjectType({
     poster_path: { type: GraphQLString },
     tagline: { type: GraphQLString },
     release_date: { type: GraphQLString },
-    runtime: { type: GraphQLInt },
+    runtime: {
+      type: GraphQLString,
+      resolve: (parent) => {
+        return runtimeConvert(parent.runtime)
+      }
+    },
     homepage: { type: GraphQLString },
     original_language: { type: GraphQLString },
     genre_ids: {
