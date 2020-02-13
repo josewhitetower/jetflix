@@ -32,7 +32,12 @@ const MovieType = new GraphQLObjectType({
     id: { type: GraphQLID },
     title: { type: GraphQLString },
     overview: { type: GraphQLString },
-    poster_path: { type: GraphQLString },
+    poster_path: {
+      type: GraphQLString,
+      resolve: (parent) => {
+        return `https://image.tmdb.org/t/p/w500${parent.poster_path}`
+      }
+    },
     tagline: { type: GraphQLString },
     release_date: { type: GraphQLString },
     runtime: {
