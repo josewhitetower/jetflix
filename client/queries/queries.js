@@ -9,4 +9,10 @@ const getTrendingQuery = gql`
   }
 `
 
+const search = gql`
+ query search {
+   search (id)
+ }
+`
+
 export { getTrendingQuery }

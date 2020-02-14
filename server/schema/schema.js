@@ -7,7 +7,6 @@ const {
   GraphQLSchema,
   GraphQLString,
   GraphQLID,
-  GraphQLInt
 } = graphql
 
 const findGenres = (parent) => {
