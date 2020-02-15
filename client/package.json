@@ -1,8 +1,8 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "My beautiful Nuxt.js project",
-  "author": "Jose Torreblanca",
+  "description": "My astounding Nuxt.js project",
+  "author": "Torreblanca, Jose",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -16,6 +16,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "core-js": "^2.6.11",
     "graphql-tag": "^2.10.3",
     "nuxt": "^2.0.0",
     "tailwindcss": "^1.2.0"
@@ -25,7 +26,10 @@
     "@nuxtjs/eslint-module": "^1.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-nuxt": ">=0.4.2",
-    "nuxt-purgecss": "^0.2.1"
+    "eslint-plugin-prettier": "^3.1.2",
+    "nuxt-purgecss": "^0.2.1",
+    "prettier": "^1.19.1"
   }
 }

@@ -1,24 +1,20 @@
 <template>
   <form @submit.prevent="handleSubmit">
-      <input type="text" v-model="query">
+    <input v-model="query" type="text" />
   </form>
 </template>
 
 <script>
 export default {
-    data: ({
-        query: "",
-        results: []
-    }),
-    methods: {
-        handleSubmit() {
-
-        }
+  data: () => ({
+    query: ''
+  }),
+  methods: {
+    handleSubmit() {
+      this.$emit('search', this.query)
     }
-
+  }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

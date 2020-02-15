@@ -135,10 +135,11 @@ const RootQuery = new GraphQLObjectType({
     search: {
       type: new GraphQLList(MovieType),
       args: {
-        query: { type: GraphQLID }
+        query: { type: GraphQLString }
       },
       resolve: (parent, args) => {
-        return Movie.search(args.query)
+          console.log(args)
+          return Movie.search(args.query)
       }
     }
   }

@@ -9,10 +9,12 @@ const getTrendingQuery = gql`
   }
 `
 
-const search = gql`
- query search {
-   search (id)
- }
+const searchQuery = gql`
+  query search($query: String) {
+    search(query: $query) {
+      title
+    }
+  }
 `
 
-export { getTrendingQuery }
+export { getTrendingQuery, searchQuery }

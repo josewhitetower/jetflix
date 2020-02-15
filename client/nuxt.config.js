@@ -24,6 +24,13 @@ export default {
    ** Global CSS
    */
   css: ['@/assets/css/tailwind.css'],
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000/graphql'
+      }
+    }
+  },
   /*
    ** Plugins to load before mounting the App
    */
@@ -41,19 +48,12 @@ export default {
   modules: [
     '@nuxtjs/apollo',
     'nuxt-purgecss',
-    // Doc: https://axios.nuxtjs.org/usage
+     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
-  apollo: {
-    clientConfigs: {
-      default: {
-        httpEndpoint: 'http://localhost:4000/graphql'
-      }
-    }
-  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -66,16 +66,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    analyze: true,
-    postcss: {
-      plugins: {
-        tailwindcss: './tailwind.config.js'
-      }
-    },
     extend(config, ctx) {}
-  },
-  purgeCSS: {
-    mode: 'postcss',
-    whitelistPatterns: [/(^|\.)fa-/, /-fa($|\.)/]
   }
 }
