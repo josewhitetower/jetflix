@@ -7,6 +7,7 @@ const {
   GraphQLSchema,
   GraphQLString,
   GraphQLID,
+  GraphQLFloat
 } = graphql
 
 const findGenres = (parent) => {
@@ -38,6 +39,7 @@ const MovieType = new GraphQLObjectType({
       }
     },
     tagline: { type: GraphQLString },
+    vote_average: { type: GraphQLFloat },
     release_date: { type: GraphQLString },
     runtime: {
       type: GraphQLString,
@@ -138,7 +140,7 @@ const RootQuery = new GraphQLObjectType({
         query: { type: GraphQLString }
       },
       resolve: (parent, args) => {
-          return Movie.search(args.query)
+        return Movie.search(args.query)
       }
     }
   }

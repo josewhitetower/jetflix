@@ -32,6 +32,7 @@ const movieQuery = gql`
       release_date
       runtime
       trailer
+      vote_average
       cast {
         id
         name

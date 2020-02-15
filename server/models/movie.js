@@ -30,8 +30,9 @@ const Movie = {
       .get(trailerVideoUrl)
       .then((response) => {
         if (response.data.results[0] && response.data.results[0].key) {
-          const trailerUrl = new URL('https://www.youtube.com/watch')
-          trailerUrl.searchParams.set('v', response.data.results[0].key)
+          const trailerUrl = new URL(
+            `https://www.youtube.com/embed/${response.data.results[0].key}`
+          )
           return decodeURIComponent(trailerUrl.toString())
         }
         return ''
