@@ -3,10 +3,15 @@
     <Search @search="handleSearchResults" />
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
-      <div v-for="movie in moviesList" :key="movie.id">
+      <nuxt-link
+        :to="`/movie/${movie.id}`"
+        v-for="movie in moviesList"
+        :key="movie.id"
+        class="block"
+      >
         <span>{{ movie.title }}</span>
         <span>{{ movie.id }}</span>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
