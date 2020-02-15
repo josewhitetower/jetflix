@@ -12,7 +12,7 @@
       <div v-if="loading">Loading...</div>
       <div v-else-if="data">
         <div>{{ data.movie.title }}</div>
-        <img :src="data.movie.poster_path" alt="" />
+        <img :src="data.movie.poster_path" alt="Poster Image" />
       </div>
       <div v-else>No result</div>
     </template>
