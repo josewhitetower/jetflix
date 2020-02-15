@@ -138,7 +138,6 @@ const RootQuery = new GraphQLObjectType({
         query: { type: GraphQLString }
       },
       resolve: (parent, args) => {
-          console.log(args)
           return Movie.search(args.query)
       }
     }

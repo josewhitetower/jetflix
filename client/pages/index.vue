@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <Search @search="handleSearchResults" />
-    <div v-for="movie in moviesList" :key="movie.id">
-      <span>{{ movie.title }}</span>
-      <span>{{ movie.id }}</span>
+    <div v-if="$apollo.loading">Loading...</div>
+    <div v-else>
+      <div v-for="movie in moviesList" :key="movie.id">
+        <span>{{ movie.title }}</span>
+        <span>{{ movie.id }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -44,7 +47,6 @@ export default {
   methods: {
     handleSearchResults(value) {
       this.searchQuery = value
-      console.log(value)
     }
   }
 }
