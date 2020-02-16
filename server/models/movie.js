@@ -1,7 +1,7 @@
 const axios = require('../axios/axios')
 const Movie = {
   trending: () => {
-    const trendingUrl = `/trending/all/day`
+    const trendingUrl = `/trending/movie/day`
     return axios
       .get(trendingUrl)
       .then((response) => response.data.results)
