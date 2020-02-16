@@ -10,27 +10,28 @@
   >
     <template v-slot="{ result: { error, data }, isLoading }">
       <div v-if="isLoading">Loading...</div>
-      <div v-else-if="data" class="bg-blue-700 flex py-8 mx-auto">
-        <img
-          :src="src(data.movie.poster_path)"
-          alt="Poster Image"
-          :title="data.movie.title"
-        />
-        <div>
-          <h1>
-            {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
-          </h1>
-          <span>{{ data.movie.vote_average }}</span>
-          <h2>Overview</h2>
-          <p>{{ data.movie.overview }}</p>
-          {{ data.movie.trailer }}
-          <input type="checkbox" v-model="showTrailer" />
-          <iframe
-            class="max-w-xl w-full h-full"
-            :src="data.movie.trailer"
-            v-show="showTrailer"
-          >
-          </iframe>
+      <div v-else-if="data" class="bg-blue-700 py-8 mx-auto">
+        <div class="flex">
+          <img
+            :src="src(data.movie.poster_path)"
+            alt="Poster Image"
+            :title="data.movie.title"
+          />
+          <div>
+            <h1>
+              {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
+            </h1>
+            <span>{{ data.movie.vote_average }}</span>
+            <h2>Overview</h2>
+            <p>{{ data.movie.overview }}</p>
+            {{ data.movie.trailer }}
+            <input type="checkbox" v-model="showTrailer" />
+          </div>
+          <Trailer
+            v-if="showTrailer"
+            :trailer-url="data.movie.trailer"
+            @close="showTrailer = false"
+          />
         </div>
       </div>
       <!-- <div v-else>No result</div> -->
@@ -40,10 +41,14 @@
 
 <script>
 // import { movieQuery } from '@/queries/queries'
+import Trailer from '@/components/Trailer'
 export default {
   data: () => ({
     showTrailer: false
   }),
+  components: {
+    Trailer
+  },
   mounted() {
     this.$nuxt.$on('search', (value) => {
       this.$router.push(`/?search=${value}`)
