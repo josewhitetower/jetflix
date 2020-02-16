@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto px-4 mt-12">
+    <Navigation />
     <Search @search="onSearch" />
     <nuxt />
   </div>
@@ -7,9 +8,11 @@
 
 <script>
 import Search from '@/components/Search.vue'
+import Navigation from '@/components/Navigation.vue'
 export default {
   components: {
-    Search
+    Search,
+    Navigation
   },
   methods: {
     onSearch(value) {

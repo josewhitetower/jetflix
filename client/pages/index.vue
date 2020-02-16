@@ -44,6 +44,7 @@ export default {
       query: getTrendingQuery,
       result(value) {
         this.moviesList = value.data.trending
+        this.$nuxt.$emit('search:clear')
       },
       skip() {
         return this.$route.fullPath !== '/'
