@@ -4,7 +4,13 @@
       class="h-0 relative pt-10 mt-40 md:mt-20"
       style="padding-bottom:52.25%"
     >
-      <button @click="$emit('close')">close</button>
+      <span
+        class="-m-10 absolute bg-black mr-5 hover:bg-white cursor-pointer hover:text-gray-900 right-0 text-xs border rounded-sm py-1 px-2"
+        title="Close"
+        @click="$emit('close')"
+      >
+        Close X
+      </span>
       <div v-if="loading">Loading...</div>
 
       <iframe

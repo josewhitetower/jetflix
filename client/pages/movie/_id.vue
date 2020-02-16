@@ -55,12 +55,13 @@
                 <font-awesome-icon :icon="['fas', 'share-alt']" />
               </span>
               <span
+                @click="showTrailer = true"
                 v-if="data.movie.trailer"
                 class="cursor-pointer hover:underline"
                 title="Watch Trailer"
               >
                 <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
-                <span @click="showTrailer = true" class="">Watch Trailer</span>
+                <span class="">Watch Trailer</span>
               </span>
             </div>
             <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
