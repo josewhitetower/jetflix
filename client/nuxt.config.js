@@ -34,7 +34,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/lazysizes.client.js'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -72,7 +72,12 @@ export default {
         tailwindcss: './tailwind.config.js'
       }
     },
-    extend(config, ctx) {}
+    extend(config, { isDev, isClient, loaders: { vue } }) {
+      if (isClient) {
+        vue.transformAssetUrls.img = ['data-src', 'src']
+        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
+      }
+    }
   },
   purgeCSS: {
     mode: 'postcss',

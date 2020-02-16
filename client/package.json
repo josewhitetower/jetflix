@@ -18,6 +18,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "core-js": "^2.6.11",
     "graphql-tag": "^2.10.3",
+    "lazysizes": "^5.2.0",
     "nuxt": "^2.0.0",
     "tailwindcss": "^1.2.0"
   },

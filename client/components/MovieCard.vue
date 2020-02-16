@@ -1,5 +1,5 @@
 <template>
-  <img :src="posterUrl" alt="" />
+  <img :data-src="posterUrl" alt="" class="lazyload" />
 </template>
 
 <script>
