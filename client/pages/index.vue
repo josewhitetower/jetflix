@@ -37,7 +37,7 @@ export default {
         this.moviesList = value.data.trending
       },
       skip() {
-        return this.$route.fullPath !== '/'
+        return this.$route.path !== '/'
       }
     },
     search: {

@@ -9,6 +9,11 @@ export default {
   data: () => ({
     query: ''
   }),
+  mounted() {
+    this.$nuxt.$on('search:clear', () => {
+      this.query = ''
+    })
+  },
   methods: {
     handleSubmit() {
       this.$emit('search', this.query)

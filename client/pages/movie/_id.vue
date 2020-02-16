@@ -45,9 +45,10 @@ export default {
     showTrailer: false
   }),
   mounted() {
-    this.$nuxt.$on('search', (data) => {
-      this.$router.push(`/?search=${data}`)
+    this.$nuxt.$on('search', (value) => {
+      this.$router.push(`/?search=${value}`)
     })
+    this.$nuxt.$emit('search:clear')
   },
   methods: {
     src(
