@@ -7,7 +7,9 @@
 const plugin = require('tailwindcss/plugin')
 module.exports = {
   theme: {},
-  variants: {},
+  variants: {
+    opacity: ['group-hover', 'hover', '']
+  },
   plugins: [
     plugin(({ addUtilities }) => {
       const newUtilities = {
