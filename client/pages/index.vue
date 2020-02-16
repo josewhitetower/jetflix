@@ -1,18 +1,19 @@
 <template>
   <div class="w-full">
-    <div v-if="$apollo.loading">Loading...</div>
-    <div v-else>
-      <h1>{{ title }}</h1>
-      <MoviesList :movies="moviesList" />
-    </div>
-    <div class="mt-10">
+    <div class="mb-10 flex flex-wrap">
       <nuxt-link
         :to="`/genre/${genre.id}`"
         v-for="genre in genres"
         :key="genre.id"
-        class="block"
+        :title="genre.title"
+        class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
         >{{ genre.name }}</nuxt-link
       >
+    </div>
+    <div v-if="$apollo.loading">Loading...</div>
+    <div v-else>
+      <h1>{{ title }}</h1>
+      <MoviesList :movies="moviesList" />
     </div>
   </div>
 </template>
