@@ -9,6 +9,7 @@
         :to="`/genre/${genre.id}`"
         v-for="genre in genres"
         :key="genre.id"
+        class="block"
         >{{ genre.name }}</nuxt-link
       >
     </div>
