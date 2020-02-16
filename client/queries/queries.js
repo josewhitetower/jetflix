@@ -47,4 +47,26 @@ const movieQuery = gql`
   }
 `
 
-export { getTrendingQuery, searchQuery, movieQuery }
+const genreQuery = gql`
+  query genre($id: ID) {
+    genre(id: $id) {
+      name
+      movies {
+        id
+        title
+        release_date
+      }
+    }
+  }
+`
+
+const genresQuery = gql`
+  {
+    genres {
+      id
+      name
+    }
+  }
+`
+
+export { getTrendingQuery, searchQuery, movieQuery, genresQuery, genreQuery }

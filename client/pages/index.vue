@@ -12,11 +12,19 @@
         <span>{{ movie.id }}</span>
       </nuxt-link>
     </div>
+    <div class="mt-10">
+      <nuxt-link
+        :to="`/genre/${genre.id}`"
+        v-for="genre in genres"
+        :key="genre.id"
+        >{{ genre.name }}</nuxt-link
+      >
+    </div>
   </div>
 </template>
 
 <script>
-import { getTrendingQuery, searchQuery } from '@/queries/queries'
+import { getTrendingQuery, searchQuery, genresQuery } from '@/queries/queries'
 export default {
   data() {
     return {
@@ -31,6 +39,9 @@ export default {
     this.searchQuery = this.$route.query.search
   },
   apollo: {
+    genres: {
+      query: genresQuery
+    },
     trending: {
       query: getTrendingQuery,
       result(value) {
