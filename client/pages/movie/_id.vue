@@ -19,7 +19,7 @@
             :title="data.movie.title"
           />
           <div class="bg-transparent p-3">
-            <h1 class="text-xl flex items-center my-2">
+            <h1 class="text-xl flex items-center mt-2 mb-4">
               <span class="mr-4 font-bold">
                 {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
               </span>
@@ -29,7 +29,7 @@
                 {{ data.movie.vote_average }}
               </div>
             </h1>
-            <div class="flex items-center mb-4 text-xs">
+            <div class="flex items-center mb-8 text-xs">
               <span
                 class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
                 title="Add to list"
