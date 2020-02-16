@@ -24,10 +24,8 @@ export default {
   },
   methods: {
     imageSource(url) {
-      console.log(url)
       if (url) {
-        const url342 = url.replace('/w500/', '/w185/')
-        return url342
+        return url
       }
       return 'https://via.placeholder.com/185x275'
     }
