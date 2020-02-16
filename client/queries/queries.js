@@ -55,6 +55,7 @@ const genreQuery = gql`
         id
         title
         release_date
+        poster_path
       }
     }
   }

@@ -1,16 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container mx-auto px-4">
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
-      <nuxt-link
-        :to="`/movie/${movie.id}`"
-        v-for="movie in moviesList"
-        :key="movie.id"
-        class="block"
-      >
-        <span>{{ movie.title }}</span>
-        <span>{{ movie.id }}</span>
-      </nuxt-link>
+      <MoviesList :movies="moviesList" />
     </div>
     <div class="mt-10">
       <nuxt-link
@@ -25,6 +17,8 @@
 
 <script>
 import { getTrendingQuery, searchQuery, genresQuery } from '@/queries/queries'
+import MoviesList from '@/components/MoviesList.vue'
+
 export default {
   data() {
     return {
@@ -37,6 +31,9 @@ export default {
       this.searchQuery = data
     })
     this.searchQuery = this.$route.query.search
+  },
+  components: {
+    MoviesList
   },
   apollo: {
     genres: {

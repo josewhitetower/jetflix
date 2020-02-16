@@ -35,7 +35,9 @@ const MovieType = new GraphQLObjectType({
     poster_path: {
       type: GraphQLString,
       resolve: (parent) => {
-        return `https://image.tmdb.org/t/p/w500${parent.poster_path}`
+        if (parent.poster_path) {
+          return `https://image.tmdb.org/t/p/w500${parent.poster_path}`
+        }
       }
     },
     tagline: { type: GraphQLString },
