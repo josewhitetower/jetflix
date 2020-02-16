@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <Search @search="handleSearchResults" />
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
       <nuxt-link
@@ -17,7 +16,6 @@
 </template>
 
 <script>
-import Search from '@/components/Search.vue'
 import { getTrendingQuery, searchQuery } from '@/queries/queries'
 export default {
   data() {
@@ -26,11 +24,20 @@ export default {
       searchQuery: ''
     }
   },
+  mounted() {
+    this.$nuxt.$on('search', (data) => {
+      this.searchQuery = data
+    })
+    this.searchQuery = this.$route.query.search
+  },
   apollo: {
     trending: {
       query: getTrendingQuery,
       result(value) {
         this.moviesList = value.data.trending
+      },
+      skip() {
+        return this.$route.fullPath !== '/'
       }
     },
     search: {
@@ -46,9 +53,7 @@ export default {
       }
     }
   },
-  components: {
-    Search
-  },
+
   methods: {
     handleSearchResults(value) {
       this.searchQuery = value

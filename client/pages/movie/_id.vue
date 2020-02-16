@@ -44,12 +44,16 @@ export default {
   data: () => ({
     showTrailer: false
   }),
+  mounted() {
+    this.$nuxt.$on('search', (data) => {
+      this.$router.push(`/?search=${data}`)
+    })
+  },
   methods: {
     src(
       url = 'https://image.tmdb.org/t/p/w92/1DPUFG6QnGqzpvEaDEv7TaepycM.jpg'
     ) {
       const url342 = url.replace('/w500/', '/w185/')
-      console.log(url)
       return url342
     },
     getYear(date) {
