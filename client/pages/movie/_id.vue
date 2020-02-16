@@ -3,7 +3,7 @@
   <div v-else-if="movie">
     <div>{{ movie.title }}</div>
     <img :src="movie.poster_path" alt="" />
-  </div> -->
+  </div>-->
   <ApolloQuery
     :query="require('@/queries/queries').movieQuery"
     :variables="{ id: $route.params.id }"
@@ -24,8 +24,10 @@
             <span>{{ data.movie.vote_average }}</span>
             <h2>Overview</h2>
             <p>{{ data.movie.overview }}</p>
-            {{ data.movie.trailer }}
-            <input type="checkbox" v-model="showTrailer" />
+            <div v-if="data.movie.trailer">
+              {{ data.movie.trailer }}
+              <input v-model="showTrailer" type="checkbox" />
+            </div>
           </div>
           <Trailer
             v-if="showTrailer"
