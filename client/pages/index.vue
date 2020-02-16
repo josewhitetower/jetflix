@@ -2,6 +2,7 @@
   <div class="w-full">
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
+      <h1>{{ title }}</h1>
       <MoviesList :movies="moviesList" />
     </div>
     <div class="mt-10">
@@ -24,7 +25,8 @@ export default {
   data() {
     return {
       moviesList: [],
-      searchQuery: ''
+      searchQuery: '',
+      title: ''
     }
   },
   mounted() {
@@ -44,6 +46,7 @@ export default {
       query: getTrendingQuery,
       result(value) {
         this.moviesList = value.data.trending
+        this.title = 'Trending'
         this.$nuxt.$emit('search:clear')
       },
       skip() {
@@ -57,6 +60,7 @@ export default {
       },
       result(value) {
         this.moviesList = value.data.search
+        this.title = `Search results: ${this.searchQuery}`
       },
       skip() {
         return !this.searchQuery
