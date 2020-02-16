@@ -52,7 +52,22 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    [
+      'nuxt-fontawesome',
+      {
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: ['faTimes', 'faPlay', 'faListUl', 'faHeart', 'faBookmark']
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['faTwitter']
+          }
+        ]
+      }
+    ]
   ],
   /*
    ** Axios module configuration

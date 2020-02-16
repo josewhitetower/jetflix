@@ -29,14 +29,34 @@
                 {{ data.movie.vote_average }}
               </div>
             </h1>
-            <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
-            <div v-if="data.movie.trailer">
+            <div class="flex items-center mb-4 text-xs">
               <span
-                @click="showTrailer = true"
-                class="cursor-pointer hover:underline"
-                >Watch Trailer</span
+                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+                title="Add to list"
               >
+                <font-awesome-icon :icon="['fas', 'list-ul']" />
+              </span>
+              <span
+                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+                title="Mark as favorite"
+              >
+                <font-awesome-icon :icon="['fas', 'heart']" />
+              </span>
+              <span
+                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+                title="Bookmark"
+              >
+                <font-awesome-icon :icon="['fas', 'bookmark']" />
+              </span>
+              <span
+                v-if="data.movie.trailer"
+                class="cursor-pointer hover:underline"
+              >
+                <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
+                <span @click="showTrailer = true" class="">Watch Trailer</span>
+              </span>
             </div>
+            <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
           </div>
           <Trailer
             v-if="showTrailer"
