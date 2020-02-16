@@ -5,7 +5,7 @@
       <div v-if="loading">Loading...</div>
 
       <iframe
-        @load="onLoad"
+        @load="loading = false"
         width="640"
         height="320"
         class="mt-20 mx-auto w-full lg:w-8/12 h-full py-20"
@@ -26,12 +26,7 @@ export default {
   },
   data: () => ({
     loading: true
-  }),
-  methods: {
-    onLoad() {
-      this.loading = false
-    }
-  }
+  })
 }
 </script>
 
