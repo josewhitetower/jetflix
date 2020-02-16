@@ -1,6 +1,6 @@
 <template>
   <div class="h-full fixed inset-0 w-full z-10 bg-transparent overflow-auto">
-    <div class="h-0 relative pt-10" style="padding-bottom:52.25%">
+    <div class="h-0 relative pt-10 mt-40" style="padding-bottom:52.25%">
       <button @click="$emit('close')">close</button>
       <div v-if="loading">Loading...</div>
 

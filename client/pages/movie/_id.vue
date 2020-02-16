@@ -10,23 +10,26 @@
   >
     <template v-slot="{ result: { error, data }, isLoading }">
       <div v-if="isLoading">Loading...</div>
-      <div v-else-if="data" class="bg-blue-700 py-8 mx-auto">
-        <div class="flex">
+      <div v-else-if="data" class="bg-gray-900 py-8 mx-auto px-3">
+        <div class="flex flex-col lg:flex-row relative">
           <img
-            :src="src(data.movie.poster_path)"
+            :src="data.movie.poster_path"
             alt="Poster Image"
+            class="w-full lg:w-auto lg:mr-4"
             :title="data.movie.title"
           />
-          <div>
-            <h1>
+          <div class="absolute bottom-0 bg-transparent p-3 md:relative">
+            <h1 class="text-xl">
               {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
             </h1>
             <span>{{ data.movie.vote_average }}</span>
-            <h2>Overview</h2>
             <p>{{ data.movie.overview }}</p>
             <div v-if="data.movie.trailer">
-              {{ data.movie.trailer }}
-              <input v-model="showTrailer" type="checkbox" />
+              <span
+                @click="showTrailer = true"
+                class="cursor-pointer hover:underline"
+                >Watch Trailer</span
+              >
             </div>
           </div>
           <Trailer
@@ -61,7 +64,7 @@ export default {
     src(
       url = 'https://image.tmdb.org/t/p/w92/1DPUFG6QnGqzpvEaDEv7TaepycM.jpg'
     ) {
-      const url342 = url.replace('/w500/', '/w185/')
+      const url342 = url.replace('/w500/', '/w342/')
       return url342
     },
     getYear(date) {

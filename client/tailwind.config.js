@@ -14,7 +14,7 @@ module.exports = {
     plugin(({ addUtilities }) => {
       const newUtilities = {
         '.bg-transparent': {
-          backgroundColor: 'rgba(0,0,0,0.4)'
+          backgroundColor: 'rgba(0,0,0,0.7)'
         }
       }
       addUtilities(newUtilities)
