@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="w-full">
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
       <MoviesList :movies="moviesList" />

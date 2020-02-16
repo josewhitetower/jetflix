@@ -1,6 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input v-model="query" type="text" />
+    <input
+      v-model="query"
+      type="text"
+      class="block border p-2 w-full"
+      placeholder="Search movies.."
+    />
   </form>
 </template>
 

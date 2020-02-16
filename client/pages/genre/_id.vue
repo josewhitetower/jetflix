@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4">
+  <div class="w-full">
     <ApolloQuery
       :query="require('@/queries/queries').genreQuery"
       :variables="{ id: $route.params.id }"
