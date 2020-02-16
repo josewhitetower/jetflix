@@ -1,7 +1,7 @@
 <template>
   <div class="h-full fixed inset-0 w-full z-10 bg-transparent overflow-auto">
     <div
-      class="h-0 relative pt-10 mt-40 md:mt-20"
+      class="h-0 relative pt-10 mt-40 md:mt-20 container mx-auto"
       style="padding-bottom:52.25%"
     >
       <span
