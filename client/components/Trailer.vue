@@ -27,7 +27,18 @@ export default {
   },
   data: () => ({
     loading: true
-  })
+  }),
+  mounted() {
+    window.addEventListener('keydown', this.onKeyEscape)
+  },
+  methods: {
+    onKeyEscape() {
+      this.$emit('close')
+    }
+  },
+  destroyed() {
+    window.removeEventListener('keydown', this.onKeyEscape)
+  }
 }
 </script>
 
