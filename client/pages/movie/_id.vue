@@ -18,12 +18,18 @@
             class="w-full lg:w-auto lg:mr-4"
             :title="data.movie.title"
           />
-          <div class="absolute bottom-0 bg-transparent p-3 md:relative">
-            <h1 class="text-xl">
-              {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
+          <div class="bg-transparent p-3">
+            <h1 class="text-xl flex items-center my-2">
+              <span class="mr-4 font-bold">
+                {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
+              </span>
+              <div
+                class="h-10 w-10 flex items-center justify-center rounded-full block text-base border-2"
+              >
+                {{ data.movie.vote_average }}
+              </div>
             </h1>
-            <span>{{ data.movie.vote_average }}</span>
-            <p>{{ data.movie.overview }}</p>
+            <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
             <div v-if="data.movie.trailer">
               <span
                 @click="showTrailer = true"
