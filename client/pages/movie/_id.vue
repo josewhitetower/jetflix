@@ -51,6 +51,7 @@
               <span
                 v-if="data.movie.trailer"
                 class="cursor-pointer hover:underline"
+                title="Watch Trailer"
               >
                 <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
                 <span @click="showTrailer = true" class="">Watch Trailer</span>
