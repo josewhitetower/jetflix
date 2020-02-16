@@ -5,7 +5,7 @@
         :to="`/genre/${genre.id}`"
         v-for="genre in genres"
         :key="genre.id"
-        :title="genre.title"
+        :title="genre.name"
         class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
         >{{ genre.name }}</nuxt-link
       >
