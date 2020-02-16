@@ -49,6 +49,12 @@
                 <font-awesome-icon :icon="['fas', 'bookmark']" />
               </span>
               <span
+                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+                title="Share"
+              >
+                <font-awesome-icon :icon="['fas', 'share-alt']" />
+              </span>
+              <span
                 v-if="data.movie.trailer"
                 class="cursor-pointer hover:underline"
                 title="Watch Trailer"
