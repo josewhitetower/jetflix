@@ -28,7 +28,7 @@
           <iframe
             class="max-w-xl w-full h-full"
             :src="data.movie.trailer"
-            v-if="showTrailer"
+            v-show="showTrailer"
           >
           </iframe>
         </div>
