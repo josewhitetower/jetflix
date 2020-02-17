@@ -40,6 +40,7 @@
               add-to-list
               favorites
               bookmark
+              share
               :trailer="data.movie.trailer"
               :id="data.movie.id"
               class="mb-8"
