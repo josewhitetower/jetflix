@@ -13,7 +13,7 @@
         add-to-list
         favorites
         bookmark
-        :id="movieIdd"
+        :id="movieId"
         class="justify-end"
       />
     </div>
