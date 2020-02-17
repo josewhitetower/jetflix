@@ -18,6 +18,7 @@
       class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Bookmark"
       v-if="bookmark"
+      @click="onBookmarkClick"
     >
       <font-awesome-icon :icon="['fas', 'bookmark']" />
     </span>
@@ -41,6 +42,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 export default {
   props: {
     addToList: {
@@ -66,6 +68,17 @@ export default {
     movieId: {
       type: String,
       default: () => ''
+    }
+  },
+  methods: {
+    ...mapMutations({
+      toggleBookmark: 'toggleBookmark'
+    }),
+    onBookmarkClick() {
+      this.toggleBookmark({
+        id: this.movieId,
+        title: this.title
+      })
     }
   }
 }
