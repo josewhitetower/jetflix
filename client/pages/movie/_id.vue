@@ -17,6 +17,7 @@
             alt="Poster Image"
             class="w-full lg:w-auto lg:mr-4"
             :title="data.movie.title"
+            v-if="data.movie.poster_path"
           />
           <div class="bg-transparent p-3">
             <h1 class="text-xl flex items-center mt-2 ">
