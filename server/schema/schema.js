@@ -23,7 +23,7 @@ const runtimeConvert = (runtime) => {
   const rHours = Math.floor(hours)
   const minutes = (hours - rHours) * 60
   const rMinutes = Math.floor(minutes)
-  return `${rHours}:${rMinutes}`
+  return `${rHours}:${rMinutes < 10 ? `0${rMinutes}` : rMinutes}`
 }
 
 const MovieType = new GraphQLObjectType({
