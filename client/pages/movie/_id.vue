@@ -19,7 +19,7 @@
             :title="data.movie.title"
           />
           <div class="bg-transparent p-3">
-            <h1 class="text-xl flex items-center mt-2 mb-4">
+            <h1 class="text-xl flex items-center mt-2 ">
               <span class="mr-4 font-bold">
                 {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
               </span>
@@ -29,41 +29,17 @@
                 {{ data.movie.vote_average }}
               </div>
             </h1>
-            <div class="flex items-center mb-8 text-xs">
-              <span
-                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
-                title="Add to list"
-              >
-                <font-awesome-icon :icon="['fas', 'list-ul']" />
-              </span>
-              <span
-                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
-                title="Mark as favorite"
-              >
-                <font-awesome-icon :icon="['fas', 'heart']" />
-              </span>
-              <span
-                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
-                title="Bookmark"
-              >
-                <font-awesome-icon :icon="['fas', 'bookmark']" />
-              </span>
-              <span
-                class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
-                title="Share"
-              >
-                <font-awesome-icon :icon="['fas', 'share-alt']" />
-              </span>
-              <span
-                @click="showTrailer = true"
-                v-if="data.movie.trailer"
-                class="cursor-pointer hover:underline"
-                title="Watch Trailer"
-              >
-                <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
-                <span class="">Watch Trailer</span>
-              </span>
-            </div>
+            <span class="text-gray-500 mb-4 inline-block">
+              Length: {{ data.movie.runtime }}
+            </span>
+            <Actions
+              add-to-list
+              favorites
+              bookmark
+              :trailer="data.movie.trailer"
+              :id="data.movie.id"
+              class="mb-8"
+            />
             <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
           </div>
           <Trailer
@@ -80,12 +56,14 @@
 
 <script>
 // import { movieQuery } from '@/queries/queries'
+import Actions from '@/components/Actions'
 import Trailer from '@/components/Trailer'
 export default {
   data: () => ({
     showTrailer: false
   }),
   components: {
+    Actions,
     Trailer
   },
   mounted() {

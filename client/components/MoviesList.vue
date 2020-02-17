@@ -7,6 +7,7 @@
         <MovieCard
           :posterUrl="imageSource(movie.poster_path)"
           :title="movie.title"
+          :movie-id="movie.id"
         ></MovieCard>
       </nuxt-link>
     </li>
