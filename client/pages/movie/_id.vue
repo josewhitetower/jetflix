@@ -11,7 +11,7 @@
     <template v-slot="{ result: { error, data }, isLoading }">
       <div v-if="isLoading">Loading...</div>
       <div v-else-if="data" class="bg-gray-900 py-8 mx-auto px-3">
-        <div class="flex flex-col lg:flex-row relative">
+        <div class="flex flex-col lg:flex-row relative justify-center">
           <img
             :src="data.movie.poster_path"
             alt="Poster Image"
@@ -25,7 +25,7 @@
                 {{ data.movie.title }} ({{ getYear(data.movie.release_date) }})
               </span>
               <div
-                class="h-10 w-10 flex items-center justify-center rounded-full block text-base border-2"
+                class="h-10 w-10 flex items-center justify-center rounded-full block text-base border-2 flex-shrink-0"
               >
                 {{ data.movie.vote_average }}
               </div>
@@ -43,8 +43,24 @@
               :trailer="data.movie.trailer"
               :id="data.movie.id"
               class="mb-8"
+              @showTrailer="showTrailer = true"
             />
-            <p class="text-sm leading-6 mb-2">{{ data.movie.overview }}</p>
+            <p class="text-sm leading-6 mb-4">{{ data.movie.overview }}</p>
+            <div>
+              <span class="text-gray-500 mb-2 inline-block">
+                Genre(s):
+              </span>
+              <div class="mb-10 flex flex-wrap">
+                <nuxt-link
+                  :to="`/genre/${genre.id}`"
+                  v-for="genre in data.movie.genres"
+                  :key="genre.id"
+                  :title="genre.name"
+                  class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
+                  >{{ genre.name }}</nuxt-link
+                >
+              </div>
+            </div>
           </div>
           <Trailer
             v-if="showTrailer"

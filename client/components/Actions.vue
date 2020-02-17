@@ -29,7 +29,7 @@
       <font-awesome-icon :icon="['fas', 'share-alt']" />
     </span>
     <span
-      @click="showTrailer = true"
+      @click="$emit('showTrailer')"
       v-if="trailer"
       class="cursor-pointer hover:underline"
       title="Watch Trailer"
