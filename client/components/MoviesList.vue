@@ -3,13 +3,11 @@
     class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mx-auto"
   >
     <li v-for="movie in movies" :key="movie.id" class="">
-      <nuxt-link :to="`/movie/${movie.id}`" class="block" :title="movie.title">
-        <MovieCard
-          :posterUrl="imageSource(movie.poster_path)"
-          :title="movie.title"
-          :movie-id="movie.id"
-        ></MovieCard>
-      </nuxt-link>
+      <MovieCard
+        :posterUrl="imageSource(movie.poster_path)"
+        :title="movie.title"
+        :movie-id="movie.id"
+      ></MovieCard>
     </li>
   </ul>
 </template>
