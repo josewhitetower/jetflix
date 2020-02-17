@@ -30,8 +30,11 @@
                 {{ data.movie.vote_average }}
               </div>
             </h1>
-            <span class="text-gray-500 mb-4 inline-block">
-              Length: {{ data.movie.runtime }}
+            <span
+              class="text-gray-500 mb-4 inline-block"
+              v-if="data.movie.runtime"
+            >
+              Length: {{ data.movie.runtime }}h
             </span>
             <Actions
               add-to-list
