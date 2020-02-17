@@ -47,7 +47,22 @@
               @showTrailer="showTrailer = true"
             />
             <p class="text-sm leading-6 mb-4">{{ data.movie.overview }}</p>
-            <div>
+            <div class="mb-6" v-if="data.movie.cast.length">
+              <span class="text-gray-500 mb-2 inline-block">
+                Cast:
+              </span>
+              <div class="flex px-4">
+                <img
+                  :src="`https://image.tmdb.org/t/p/w92${cast.profile_path}`"
+                  alt=""
+                  v-for="cast in data.movie.cast"
+                  :key="cast.id"
+                  class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover border-2 -ml-3 cursor-pointer flex-shrink-0"
+                  :title="`${cast.name} (${cast.character})`"
+                />
+              </div>
+            </div>
+            <div v-if="data.movie.genres.length">
               <span class="text-gray-500 mb-2 inline-block">
                 Genre(s):
               </span>

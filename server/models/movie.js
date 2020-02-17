@@ -45,7 +45,9 @@ const Movie = {
     return axios
       .get(creditsUrl)
       .then((response) => {
-        return response.data.cast.filter((cast) => cast.profile_path)
+        return response.data.cast
+          .filter((cast) => cast.profile_path)
+          .slice(0, 5)
       })
       .catch((error) => console.log(error))
   },
