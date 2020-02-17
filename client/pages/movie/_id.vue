@@ -42,7 +42,8 @@
               bookmark
               share
               :trailer="data.movie.trailer"
-              :id="data.movie.id"
+              :movie-id="data.movie.id"
+              :title="data.movie.title"
               class="mb-8"
               @showTrailer="showTrailer = true"
             />
