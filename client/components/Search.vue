@@ -6,13 +6,12 @@
       class="block rounded p-2 w-full bg-gray-900"
       placeholder="Search movies.."
     />
-    <nuxt-link
-      to="/"
+    <font-awesome-icon
+      :icon="['fas', 'times']"
       v-if="query"
-      class="absolute right-0 top-0 mt-2 mr-3 cursor-pointer text-lg"
-    >
-      <font-awesome-icon :icon="['fas', 'times']" />
-    </nuxt-link>
+      class="absolute right-0 top-0 mt-3 mr-3 cursor-pointer text-lg"
+      @click="query = ''"
+    />
   </form>
 </template>
 
@@ -21,11 +20,6 @@ export default {
   data: () => ({
     query: ''
   }),
-  mounted() {
-    this.$nuxt.$on('search:clear', () => {
-      this.query = ''
-    })
-  },
   watch: {
     query(prev) {
       if (!prev) {

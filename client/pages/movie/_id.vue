@@ -108,7 +108,6 @@ export default {
     this.$nuxt.$on('search', (value) => {
       this.$router.push(`/?search=${value}`)
     })
-    this.$nuxt.$emit('search:clear')
   },
   methods: {
     src(

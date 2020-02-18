@@ -48,7 +48,6 @@ export default {
       result(value) {
         this.moviesList = value.data.trending
         this.title = 'Trending'
-        this.$nuxt.$emit('search:clear')
       },
       skip() {
         return this.$route.fullPath !== '/'
