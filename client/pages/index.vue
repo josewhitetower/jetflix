@@ -12,7 +12,7 @@
     </div>
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
-      <h1 class="mb-4 font-bold">{{ title }}</h1>
+      <h1 class="mb-8 font-bold">{{ title }}</h1>
       <MoviesList :movies="moviesList" />
     </div>
   </div>
