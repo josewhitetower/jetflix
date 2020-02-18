@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-4 mt-12">
+  <div class="container mx-auto px-4 mt-24">
     <Navigation />
     <Search @search="onSearch" />
     <nuxt />
