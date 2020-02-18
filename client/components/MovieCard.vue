@@ -12,7 +12,6 @@
     >
       <p class="mb-1 font-semibold">{{ title }}</p>
       <Actions
-        add-to-list
         favorites
         bookmark
         :title="title"

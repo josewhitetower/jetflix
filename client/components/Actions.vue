@@ -1,13 +1,6 @@
 <template>
   <div class="flex items-center text-xs">
     <span
-      class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
-      title="Add to list"
-      v-if="addToList"
-    >
-      <font-awesome-icon :icon="['fas', 'list-ul']" />
-    </span>
-    <span
       :class="{ 'bg-white text-gray-900': isFavorited }"
       class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Mark as favorite"
@@ -48,10 +41,6 @@
 import { mapMutations, mapGetters } from 'vuex'
 export default {
   props: {
-    addToList: {
-      type: Boolean,
-      default: () => false
-    },
     favorites: {
       type: Boolean,
       default: () => false

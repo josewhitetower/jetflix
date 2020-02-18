@@ -65,7 +65,6 @@ export default {
             icons: [
               'faTimes',
               'faPlay',
-              'faListUl',
               'faHeart',
               'faBookmark',
               'faShareAlt'

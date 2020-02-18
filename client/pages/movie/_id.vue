@@ -37,7 +37,6 @@
               Length: {{ data.movie.runtime }}h
             </span>
             <Actions
-              add-to-list
               favorites
               bookmark
               share
