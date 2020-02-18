@@ -3,6 +3,10 @@ export const state = () => ({
   favorites: []
 })
 
+// I chose to not use actions because there's no ayncronous operation here
+// state cmutate directly
+// https://vuex.vuejs.org/guide/actions.html
+// https://vuex.vuejs.org/guide/mutations.html
 export const mutations = {
   toggleBookmark(state, data) {
     const isBookmarked = !!state.bookmarks.find((bm) => bm.id === data.id)
