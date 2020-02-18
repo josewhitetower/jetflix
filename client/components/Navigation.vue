@@ -1,7 +1,7 @@
 <template>
   <div
     :class="isScrolled"
-    class="container fixed left-0 mx-auto pb-5 px-6 right-0 top-0 z-10 pt-5 bg-black"
+    class="container fixed left-0 mx-auto pb-5 px-6 right-0 top-0 z-20 pt-5 bg-black"
   >
     <nuxt-link to="/">Home</nuxt-link>
   </div>
