@@ -46,6 +46,8 @@
               class="mb-8"
               @showTrailer="showTrailer = true"
             />
+            <h2 class="font-semibold">{{ data.movie.tagline }}</h2>
+
             <p class="text-sm leading-6 mb-4">{{ data.movie.overview }}</p>
             <div class="mb-6" v-if="data.movie.cast.length">
               <span class="text-gray-500 mb-2 inline-block">
