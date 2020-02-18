@@ -19,6 +19,15 @@ export default {
       this.query = ''
     })
   },
+  watch: {
+    query(prev) {
+      if (!prev) {
+        this.$router.push('/')
+      } else {
+        this.handleSubmit()
+      }
+    }
+  },
   methods: {
     handleSubmit() {
       this.$emit('search', this.query)
