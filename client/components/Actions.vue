@@ -8,13 +8,16 @@
       <font-awesome-icon :icon="['fas', 'list-ul']" />
     </span>
     <span
+      :class="{ 'bg-white text-gray-900': isFavorited }"
       class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Mark as favorite"
       v-if="favorites"
+      @click="onFavoriteClick"
     >
       <font-awesome-icon :icon="['fas', 'heart']" />
     </span>
     <span
+      :class="{ 'bg-white text-gray-900': isBookmarked }"
       class="h-8 w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Bookmark"
       v-if="bookmark"
@@ -42,7 +45,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   props: {
     addToList: {
@@ -68,14 +71,37 @@ export default {
     movieId: {
       type: String,
       default: () => ''
+    },
+    title: {
+      type: String,
+      default: () => ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      isBookmarkedGetter: 'isBookmarked',
+      isFavoritedGetter: 'isFavorited'
+    }),
+    isBookmarked() {
+      return this.isBookmarkedGetter(this.movieId)
+    },
+    isFavorited() {
+      return this.isFavoritedGetter(this.movieId)
     }
   },
   methods: {
     ...mapMutations({
-      toggleBookmark: 'toggleBookmark'
+      toggleBookmark: 'toggleBookmark',
+      toggleFavorite: 'toggleFavorite'
     }),
     onBookmarkClick() {
       this.toggleBookmark({
+        id: this.movieId,
+        title: this.title
+      })
+    },
+    onFavoriteClick() {
+      this.toggleFavorite({
         id: this.movieId,
         title: this.title
       })
