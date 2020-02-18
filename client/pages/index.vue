@@ -67,10 +67,9 @@ export default {
       }
     }
   },
-
-  methods: {
-    handleSearchResults(value) {
-      this.searchQuery = value
+  watch: {
+    $route() {
+      this.searchQuery = this.$route.query.search
     }
   }
 }

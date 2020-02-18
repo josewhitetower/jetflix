@@ -13,14 +13,6 @@ export default {
   components: {
     Search,
     Navigation
-  },
-  methods: {
-    onSearch(value) {
-      if (value) {
-        this.$router.push(`/?search=${value}`)
-        this.$nuxt.$emit('search', value)
-      }
-    }
   }
 }
 </script>
