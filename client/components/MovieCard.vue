@@ -6,7 +6,7 @@
       <img
         :data-src="posterUrl"
         alt=""
-        class="lazyload opacity-75 hover:opacity-100 transition duration-500 ease-in-out"
+        class="lazyload opacity-75 group-hover:opacity-100"
       />
     </nuxt-link>
     <div
