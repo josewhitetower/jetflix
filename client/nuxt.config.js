@@ -96,12 +96,7 @@ export default {
         tailwindcss: './tailwind.config.js'
       }
     },
-    extend(config, { isDev, isClient, loaders: { vue } }) {
-      if (isClient) {
-        vue.transformAssetUrls.img = ['data-src', 'src']
-        vue.transformAssetUrls.source = ['data-srcset', 'srcset']
-      }
-    }
+    extend(config) {}
   },
   purgeCSS: {
     mode: 'postcss',
