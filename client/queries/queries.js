@@ -48,9 +48,11 @@ const movieQuery = gql`
 `
 
 const genreQuery = gql`
-  query genre($id: ID) {
-    genre(id: $id) {
+  query genre($id: ID, $page: Int) {
+    genre(id: $id, page: $page) {
       name
+      page
+      total_pages
       movies {
         id
         title

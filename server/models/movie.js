@@ -16,11 +16,27 @@ const Movie = {
       .catch((error) => ({ error: error }))
   },
 
-  findByGenreId: (genreId) => {
-    const discoverUrl = `/discover/movie/?with_genres=${genreId}`
+  findByGenreId: (genreId, page = 1) => {
+    const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
     return axios
       .get(discoverUrl)
       .then((response) => response.data.results)
+      .catch((error) => ({ error: error }))
+  },
+
+  findPageByGenreId: (genreId, page = 1) => {
+    const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
+    return axios
+      .get(discoverUrl)
+      .then((response) => response.data.page)
+      .catch((error) => ({ error: error }))
+  },
+
+  findTotalPagesByGenreId: (genreId, page = 1) => {
+    const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
+    return axios
+      .get(discoverUrl)
+      .then((response) => response.data.total_pages)
       .catch((error) => ({ error: error }))
   },
 

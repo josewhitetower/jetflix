@@ -4,7 +4,7 @@
     class="container fixed left-0 mx-auto pb-5 px-6 right-0 top-0 z-20 pt-5 bg-black"
   >
     <nuxt-link to="/" class="mr-3">Home</nuxt-link>
-    <span @click="showFavorites = !showFavorites"
+    <span @click="showFavorites = !showFavorites" class="cursor-pointer"
       >Favorites ({{ favorites.length }})</span
     >
     <ul

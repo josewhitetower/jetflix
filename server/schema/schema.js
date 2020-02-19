@@ -7,7 +7,8 @@ const {
   GraphQLSchema,
   GraphQLString,
   GraphQLID,
-  GraphQLFloat
+  GraphQLFloat,
+  GraphQLInt
 } = graphql
 
 const findGenres = (parent) => {
@@ -83,10 +84,22 @@ const GenreType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLString },
     name: { type: GraphQLString },
+    page: {
+      type: GraphQLInt,
+      resolve: (parent) => {
+        return Movie.findPageByGenreId(parent.id, parent.page)
+      }
+    },
+    total_pages: {
+      type: GraphQLInt,
+      resolve: (parent) => {
+        return Movie.findTotalPagesByGenreId(parent.id, parent.page)
+      }
+    },
     movies: {
       type: new GraphQLList(MovieType),
       resolve: (parent, args) => {
-        return Movie.findByGenreId(parent.id)
+        return Movie.findByGenreId(parent.id, parent.page)
       }
     }
   })
@@ -130,10 +143,11 @@ const RootQuery = new GraphQLObjectType({
     genre: {
       type: GenreType,
       args: {
-        id: { type: GraphQLID }
+        id: { type: GraphQLID },
+        page: { type: GraphQLInt }
       },
       resolve: (parent, args) => {
-        return Genre.findById(args.id)
+        return Genre.findById(args.id, args.page)
       }
     },
     search: {

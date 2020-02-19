@@ -7,12 +7,14 @@ const Genre = {
       .then((response) => response.data.genres)
       .catch((error) => ({ error: error }))
   },
-  findById: (genreId) => {
+  findById: (genreId, page) => {
     const movieUrl = `/genre/movie/list`
     return axios
       .get(movieUrl)
       .then((response) => {
-        return response.data.genres.find((genre) => genre.id == genreId)
+        const genre = response.data.genres.find((genre) => genre.id == genreId)
+        genre.page = page
+        return genre
       })
       .catch((error) => ({ error: error }))
   }
