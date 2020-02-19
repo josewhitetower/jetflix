@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 mt-24 pb-8">
     <Navigation />
-    <Search @search="onSearch" />
+    <Search />
     <nuxt />
   </div>
 </template>
