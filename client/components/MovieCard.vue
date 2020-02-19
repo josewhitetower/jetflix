@@ -1,6 +1,6 @@
 <template>
   <div
-    class="group relative transform hover:scale-110 transition duration-500 ease-in-out"
+    class="group relative md:transform hover:scale-110 transition duration-500 ease-in-out"
   >
     <nuxt-link :to="`/movie/${movieId}`" class="block" :title="title">
       <img
