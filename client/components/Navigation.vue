@@ -9,7 +9,8 @@
     >
     <ul
       :class="[showFavorites ? 'opacity-100 visible' : 'opacity-0 invisible']"
-      class="border border-gray-900 p-2 rounded-md transition duration-500 ease-in-out absolute bg-transparent text-center"
+      class="border border-gray-900 p-2 rounded-md transition duration-500 ease-in-out absolute bg-transparent text-center overflow-auto"
+      style="max-height: 300px"
     >
       <li
         v-for="favorite in favorites"
