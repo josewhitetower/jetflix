@@ -32,5 +32,8 @@ export const getters = {
   },
   isFavorited: (state) => (id) => {
     return !!state.favorites.find((fv) => fv.id === id)
+  },
+  favorites: (state) => {
+    return state.favorites
   }
 }
