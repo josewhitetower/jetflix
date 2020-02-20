@@ -50,7 +50,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/router',
     '@nuxtjs/apollo',
     'nuxt-purgecss',
     // Doc: https://axios.nuxtjs.org/usage
