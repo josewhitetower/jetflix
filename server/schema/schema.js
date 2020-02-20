@@ -87,19 +87,25 @@ const GenreType = new GraphQLObjectType({
     page: {
       type: GraphQLInt,
       resolve: (parent) => {
-        return Movie.findPageByGenreId(parent.id, parent.page)
+        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
+          (response) => response.page
+        )
       }
     },
     total_pages: {
       type: GraphQLInt,
       resolve: (parent) => {
-        return Movie.findTotalPagesByGenreId(parent.id, parent.page)
+        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
+          (response) => response.total_pages
+        )
       }
     },
     movies: {
       type: new GraphQLList(MovieType),
       resolve: (parent, args) => {
-        return Movie.findByGenreId(parent.id, parent.page)
+        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
+          (response) => response.results
+        )
       }
     }
   })
