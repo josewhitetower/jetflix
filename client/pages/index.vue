@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     this.searchQuery = this.$route.query.search
-    this.page = Number(this.$route.query.page)
+    this.page = this.$route.query.page ? Number(this.$route.query.page) : 0
   },
   components: {
     MoviesList,
