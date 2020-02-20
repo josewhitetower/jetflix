@@ -20,6 +20,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/router": "^1.5.0",
     "core-js": "^2.6.11",
     "graphql-tag": "^2.10.3",
     "lazysizes": "^5.2.0",
