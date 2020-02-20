@@ -1,14 +1,34 @@
 <template>
   <div class="w-full">
-    <div class="mb-10 flex flex-wrap">
-      <nuxt-link
-        :to="`/genre/${genre.id}`"
-        v-for="genre in genres"
-        :key="genre.id"
-        :title="genre.name"
-        class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
-        >{{ genre.name }}</nuxt-link
-      >
+    <div class="mb-4 md:hidden">
+      <font-awesome-icon
+        :icon="['fas', 'angle-double-left']"
+        v-if="toggleGenres"
+        @click="toggleGenres = !toggleGenres"
+      />
+
+      <font-awesome-icon
+        :icon="['fas', 'angle-double-right']"
+        v-if="!toggleGenres"
+        @click="toggleGenres = !toggleGenres"
+      />
+    </div>
+    <div
+      :class="[toggleGenres ? 'translate-x-0' : '-translate-x-full']"
+      class="absolute bg-transparent mb-10 transform z-20 transition duration-500 ease-in-out md:relative md:translate-x-0 pb-3"
+    >
+      <h2 class="mb-3 font-semibold">Genres</h2>
+
+      <div class=" flex flex-wrap">
+        <nuxt-link
+          :to="`/genre/${genre.id}`"
+          v-for="genre in genres"
+          :key="genre.id"
+          :title="genre.name"
+          class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
+          >{{ genre.name }}</nuxt-link
+        >
+      </div>
     </div>
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
@@ -37,7 +57,8 @@ export default {
       searchQuery: '',
       title: '',
       total_pages: 0,
-      page: 0
+      page: 0,
+      toggleGenres: false
     }
   },
   mounted() {

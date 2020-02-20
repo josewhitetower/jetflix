@@ -27,8 +27,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint:
-          process.env.GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql'
+        httpEndpoint: 'https://jt-jetflix.appspot.com/graphql'
       }
     }
   },
@@ -63,7 +62,15 @@ export default {
         imports: [
           {
             set: '@fortawesome/free-solid-svg-icons',
-            icons: ['faTimes', 'faPlay', 'faHeart', 'faBookmark', 'faShareAlt']
+            icons: [
+              'faTimes',
+              'faPlay',
+              'faHeart',
+              'faBookmark',
+              'faShareAlt',
+              'faAngleDoubleRight',
+              'faAngleDoubleLeft'
+            ]
           },
           {
             set: '@fortawesome/free-brands-svg-icons',
