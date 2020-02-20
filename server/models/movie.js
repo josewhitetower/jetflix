@@ -52,12 +52,12 @@ const Movie = {
       .catch((error) => console.log(error))
   },
 
-  search: (query) => {
-    const creditsUrl = `search/movie?query=${query}`
+  search: (query, page = 1) => {
+    const creditsUrl = `search/movie?query=${query}&page=${page}`
     return axios
       .get(creditsUrl)
       .then((response) => {
-        return response.data.results
+        return response.data
       })
       .catch((error) => console.log(error))
   }

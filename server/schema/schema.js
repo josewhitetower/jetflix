@@ -122,6 +122,34 @@ const PersonType = new GraphQLObjectType({
   })
 })
 
+const SearchType = new GraphQLObjectType({
+  name: 'Search',
+  fields: () => ({
+    results: {
+      type: new GraphQLList(MovieType),
+      args: {
+        query: { type: GraphQLString },
+        page: { type: GraphQLInt }
+      },
+      resolve: (parent, args) => {
+        return parent.results
+      }
+    },
+    page: {
+      type: GraphQLInt,
+      resolve: (parent, args) => {
+        return parent.page
+      }
+    },
+    total_pages: {
+      type: GraphQLInt,
+      resolve: (parent, args) => {
+        return parent.total_pages
+      }
+    }
+  })
+})
+
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
@@ -157,12 +185,13 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     search: {
-      type: new GraphQLList(MovieType),
+      type: SearchType,
       args: {
-        query: { type: GraphQLString }
+        query: { type: GraphQLString },
+        page: { type: GraphQLInt }
       },
       resolve: (parent, args) => {
-        return Movie.search(args.query)
+        return Movie.search(args.query, args.page).then((response) => response)
       }
     }
   }

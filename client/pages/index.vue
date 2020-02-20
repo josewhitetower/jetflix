@@ -14,6 +14,13 @@
     <div v-else>
       <h1 class="mb-8 font-bold">{{ title }}</h1>
       <MoviesList :movies="moviesList" />
+      <Pagination
+        v-if="total_pages"
+        @prev="page--"
+        @next="page++"
+        :page="page"
+        :total_pages="total_pages"
+      />
     </div>
   </div>
 </template>
@@ -21,23 +28,25 @@
 <script>
 import { getTrendingQuery, searchQuery, genresQuery } from '@/queries/queries'
 import MoviesList from '@/components/MoviesList.vue'
+import Pagination from '@/components/Pagination.vue'
 
 export default {
   data() {
     return {
       moviesList: [],
       searchQuery: '',
-      title: ''
+      title: '',
+      total_pages: 0,
+      page: 0
     }
   },
   mounted() {
-    this.$nuxt.$on('search', (data) => {
-      this.searchQuery = data
-    })
     this.searchQuery = this.$route.query.search
+    this.page = Number(this.$route.query.page)
   },
   components: {
-    MoviesList
+    MoviesList,
+    Pagination
   },
   apollo: {
     genres: {
@@ -56,10 +65,12 @@ export default {
     search: {
       query: searchQuery,
       variables() {
-        return { query: this.searchQuery }
+        return { query: this.searchQuery, page: Number(this.$route.query.page) }
       },
       result(value) {
-        this.moviesList = value.data.search
+        this.moviesList = value.data.search.results
+        this.total_pages = value.data.search.total_pages
+        this.page = value.data.search.page
         this.title = `Search results: ${this.searchQuery}`
       },
       skip() {
@@ -70,6 +81,11 @@ export default {
   watch: {
     $route() {
       this.searchQuery = this.$route.query.search
+    },
+    page() {
+      this.$router.push({
+        query: { search: this.searchQuery, page: this.page }
+      })
     }
   }
 }
