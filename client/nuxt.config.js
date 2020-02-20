@@ -27,7 +27,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:4000/graphql'
+        httpEndpoint:
+          process.env.GRAPHQL_ENDPOINT || 'http://localhost:4000/graphql'
       }
     }
   },
@@ -62,13 +63,7 @@ export default {
         imports: [
           {
             set: '@fortawesome/free-solid-svg-icons',
-            icons: [
-              'faTimes',
-              'faPlay',
-              'faHeart',
-              'faBookmark',
-              'faShareAlt'
-            ]
+            icons: ['faTimes', 'faPlay', 'faHeart', 'faBookmark', 'faShareAlt']
           },
           {
             set: '@fortawesome/free-brands-svg-icons',
