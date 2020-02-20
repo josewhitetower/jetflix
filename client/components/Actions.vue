@@ -2,7 +2,7 @@
   <div class="flex items-center text-xs">
     <span
       :class="{ 'bg-white text-gray-900': isFavorited }"
-      class="w-6 h-6 md:h-8 md:w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+      class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Mark as favorite"
       v-if="favorites"
       @click="onFavoriteClick"
@@ -11,7 +11,7 @@
     </span>
     <span
       :class="{ 'bg-white text-gray-900': isBookmarked }"
-      class="w-6 h-6 md:h-8 md:w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
+      class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Bookmark"
       v-if="bookmark"
       @click="onBookmarkClick"

@@ -5,6 +5,7 @@
       type="text"
       class="block rounded p-2 w-full bg-gray-900"
       placeholder="Search movies.."
+      @change="handleSubmit"
     />
     <font-awesome-icon
       :icon="['fas', 'times']"
