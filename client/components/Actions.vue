@@ -64,6 +64,10 @@ export default {
     title: {
       type: String,
       default: () => ''
+    },
+    posterUrl: {
+      type: String,
+      default: () => ''
     }
   },
   computed: {
@@ -92,7 +96,8 @@ export default {
     onFavoriteClick() {
       this.toggleFavorite({
         id: this.movieId,
-        title: this.title
+        title: this.title,
+        posterUrl: this.posterUrl
       })
     }
   }

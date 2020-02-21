@@ -18,6 +18,7 @@
         bookmark
         :title="title"
         :movie-id="movieId"
+        :poster-url="posterUrl"
         class="justify-end"
       />
     </div>
