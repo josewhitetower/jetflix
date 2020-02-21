@@ -43,7 +43,7 @@
               :trailer="data.movie.trailer"
               :movie-id="data.movie.id"
               :title="data.movie.title"
-              :poster-ulr="data.movie.poster_path"
+              :poster-url="data.movie.poster_path"
               class="mb-8"
               @showTrailer="showTrailer = true"
             />
