@@ -1,24 +1,6 @@
 <template>
   <div class="w-full">
-    <div class="mb-4 md:hidden">
-      <font-awesome-icon
-        :icon="['fas', 'angle-double-left']"
-        v-if="toggleGenres"
-        @click="toggleGenres = !toggleGenres"
-      />
-
-      <font-awesome-icon
-        :icon="['fas', 'angle-double-right']"
-        v-if="!toggleGenres"
-        @click="toggleGenres = !toggleGenres"
-      />
-    </div>
-    <div
-      :class="[toggleGenres ? 'translate-x-0' : '-translate-x-full']"
-      class="absolute bg-transparent mb-10 transform z-20 transition duration-500 ease-in-out md:relative md:translate-x-0 pb-3"
-    >
-      <h2 class="mb-3 font-semibold">Genres</h2>
-
+    <div class="mb-10 transform z-20 pb-3 hidden md:block">
       <div class=" flex flex-wrap">
         <nuxt-link
           :to="`/genre/${genre.id}`"

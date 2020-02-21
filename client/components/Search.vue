@@ -2,7 +2,7 @@
   <form @submit.prevent="handleSubmit" class="my-12 relative">
     <input
       :value="searchQuery"
-      @input="e => searchQuery = e.target.value"
+      @input="(e) => (searchQuery = e.target.value)"
       type="text"
       class="block rounded p-2 w-full bg-gray-900"
       placeholder="Search movies..."

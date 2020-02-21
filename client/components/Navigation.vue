@@ -4,8 +4,11 @@
     class="container fixed left-0 mx-auto pb-5 px-6 right-0 top-0 z-20 pt-5 bg-black"
   >
     <nuxt-link to="/" class="mr-3">Home</nuxt-link>
-    <span @click="showFavorites = !showFavorites" class="cursor-pointer"
+    <span @click="showFavorites = !showFavorites" class="cursor-pointer mr-3"
       >Favorites ({{ favorites.length }})</span
+    >
+    <nuxt-link to="/genres" class="cursor-pointer mr-3 md:hidden"
+      >Genres</nuxt-link
     >
     <ul
       :class="[showFavorites ? 'opacity-100 visible' : 'opacity-0 invisible']"
@@ -33,7 +36,8 @@ export default {
       view: {
         isAtTopOfPage: true
       },
-      showFavorites: false
+      showFavorites: false,
+      showGenres: false
     }
   },
   computed: {
