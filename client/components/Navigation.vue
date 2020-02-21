@@ -3,7 +3,7 @@
     :class="isScrolled"
     class="container fixed left-0 mx-auto pb-5 px-6 right-0 top-0 z-20 pt-5 bg-black flex"
   >
-    <nuxt-link to="/" class="mr-3">Home</nuxt-link>
+    <nuxt-link to="/" class="mr-3">Jetflix</nuxt-link>
     <div class="relative">
       <span @click="showBookmarks = !showBookmarks" class="cursor-pointer mr-3"
         >Bookmarks ({{ bookmarks.length }})</span
