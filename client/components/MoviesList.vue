@@ -4,7 +4,7 @@
   >
     <li v-for="movie in movies" :key="movie.id">
       <MovieCard
-        :posterUrl="imageSource(movie.poster_path)"
+        :posterUrl="movie.poster_path"
         :title="movie.title"
         :movie-id="movie.id"
       ></MovieCard>
@@ -19,14 +19,6 @@ export default {
     movies: {
       type: Array,
       default: () => []
-    }
-  },
-  methods: {
-    imageSource(url) {
-      if (url) {
-        return url
-      }
-      return 'https://via.placeholder.com/294x430'
     }
   },
   components: {
