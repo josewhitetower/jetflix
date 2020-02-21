@@ -2,7 +2,7 @@
   <ul
     class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-6 mx-auto"
   >
-    <li v-for="movie in movies" :key="movie.id" class="">
+    <li v-for="movie in movies" :key="movie.id">
       <MovieCard
         :posterUrl="imageSource(movie.poster_path)"
         :title="movie.title"

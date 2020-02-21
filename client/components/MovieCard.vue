@@ -6,6 +6,8 @@
       <img
         :data-src="posterUrl"
         alt=""
+        width="300"
+        height="450"
         class="lazyload opacity-75 group-hover:opacity-100"
       />
     </nuxt-link>

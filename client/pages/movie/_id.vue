@@ -14,6 +14,8 @@
         <div class="flex flex-col lg:flex-row relative justify-center">
           <img
             :src="data.movie.poster_path"
+            width="500"
+            height="750"
             alt="Poster Image"
             class="w-full lg:w-auto lg:mr-4"
             :title="data.movie.title"
