@@ -1,7 +1,7 @@
 <template>
   <div class="bg-transparent mb-10 transform z-20 pb-3">
     <h2 class="mb-3 font-semibold">Genres</h2>
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-2 gap-2">
       <nuxt-link
         :to="`/genre/${genre.id}`"
         v-for="genre in genres"
