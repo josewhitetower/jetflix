@@ -17,7 +17,7 @@
             width="500"
             height="750"
             alt="Poster Image"
-            class="w-full lg:w-auto lg:mr-4"
+            class="w-full lg:w-auto lg:mr-4 bg-gray-900"
             :title="data.movie.title"
             v-if="data.movie.poster_path"
           />
@@ -62,7 +62,7 @@
                   alt=""
                   v-for="cast in data.movie.cast"
                   :key="cast.id"
-                  class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover border-2 -ml-3 cursor-pointer flex-shrink-0"
+                  class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover border-2 -ml-3 cursor-pointer flex-shrink-0 bg-gray-900"
                   :title="`${cast.name} (${cast.character})`"
                 />
               </div>

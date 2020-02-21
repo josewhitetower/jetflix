@@ -8,7 +8,7 @@
         alt=""
         width="300"
         height="450"
-        class="lazyload opacity-75 group-hover:opacity-100"
+        class="lazyload opacity-75 group-hover:opacity-100 bg-gray-900"
       />
     </nuxt-link>
     <div
