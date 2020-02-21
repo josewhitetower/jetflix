@@ -24,9 +24,7 @@
         </li>
       </ul>
     </div>
-    <nuxt-link to="/favorites" class="cursor-pointer mr-3 md:hidden"
-      >Favorites</nuxt-link
-    >
+    <nuxt-link to="/favorites" class="cursor-pointer mr-3">Favorites</nuxt-link>
     <nuxt-link to="/genres" class="cursor-pointer mr-3 md:hidden"
       >Genres</nuxt-link
     >
