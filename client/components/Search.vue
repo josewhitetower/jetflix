@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit" class="my-12 relative">
     <input
-      v-model="query"
+      :value="searchQuery"
+      @input="e => searchQuery = e.target.value"
       type="text"
       class="block rounded p-2 w-full bg-gray-900"
-      placeholder="Search movies.."
-      @change="handleSubmit"
+      placeholder="Search movies..."
     />
     <font-awesome-icon
       :icon="['fas', 'times']"
