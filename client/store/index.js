@@ -35,5 +35,8 @@ export const getters = {
   },
   favorites: (state) => {
     return state.favorites
+  },
+  bookmarks: (state) => {
+    return state.bookmarks
   }
 }
