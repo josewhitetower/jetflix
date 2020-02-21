@@ -65,7 +65,7 @@ export default {
       type: String,
       default: () => ''
     },
-    posterUrl: {
+    poster_path: {
       type: String,
       default: () => ''
     }
@@ -97,7 +97,7 @@ export default {
       this.toggleFavorite({
         id: this.movieId,
         title: this.title,
-        posterUrl: this.posterUrl
+        poster_path: this.poster_path
       })
     }
   }
