@@ -1,16 +1,16 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="my-12 relative">
+  <form class="my-12 relative" @submit.prevent="handleSubmit">
     <input
       :value="query"
-      @input="(e) => (query = e.target.value)"
       type="text"
       class="block rounded p-2 w-full bg-gray-900"
       placeholder="Search movies..."
+      @input="(e) => (query = e.target.value)"
     />
     <font-awesome-icon
-      :icon="['fas', 'times']"
       v-if="query"
       class="absolute right-0 top-0 mt-3 mr-3 cursor-pointer text-lg"
+      :icon="['fas', 'times']"
       @click="query = ''"
     />
   </form>

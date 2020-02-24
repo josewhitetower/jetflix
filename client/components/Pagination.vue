@@ -4,21 +4,21 @@
   >
     <div class="flex-1 cursor-pointer">
       <div
-        @click="$emit('prev')"
-        class="p-2 hover:bg-gray-800"
         :class="{ hidden: page === 1 }"
+        class="p-2 hover:bg-gray-800"
+        @click="$emit('prev')"
       >
         Prev
       </div>
     </div>
     <div class="flex-1">
-      <span>Page {{ page }} of {{ total_pages }}</span>
+      <span>Page {{ page }} of {{ totalPages }}</span>
     </div>
     <div class="flex-1 cursor-pointer">
       <div
-        @click="$emit('next')"
+        :class="{ hidden: page >= totalPages }"
         class="p-2 hover:bg-gray-800"
-        :class="{ hidden: page >= total_pages }"
+        @click="$emit('next')"
       >
         Next
       </div>
@@ -33,7 +33,7 @@ export default {
       type: Number,
       default: () => 1
     },
-    total_pages: {
+    totalPages: {
       type: Number,
       default: () => null
     }

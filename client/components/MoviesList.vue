@@ -4,7 +4,7 @@
   >
     <li v-for="movie in movies" :key="movie.id">
       <MovieCard
-        :posterUrl="imageSource(movie.poster_path)"
+        :poster-url="imageSource(movie.poster_path)"
         :title="movie.title"
         :movie-id="movie.id"
       ></MovieCard>
@@ -15,6 +15,9 @@
 <script>
 import MovieCard from '@/components/MovieCard.vue'
 export default {
+  components: {
+    MovieCard
+  },
   props: {
     movies: {
       type: Array,
@@ -28,9 +31,6 @@ export default {
       }
       return 'https://via.placeholder.com/294x430'
     }
-  },
-  components: {
-    MovieCard
   }
 }
 </script>

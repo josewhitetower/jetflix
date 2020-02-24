@@ -11,10 +11,10 @@
 
           <MoviesList :movies="data.genre.movies" />
           <Pagination
+            :page="data.genre.page"
+            :total-pages="data.genre.total_pages"
             @prev="page--"
             @next="page++"
-            :page="data.genre.page"
-            :total_pages="data.genre.total_pages"
           />
         </div>
       </template>
@@ -33,13 +33,13 @@ export default {
   data: () => ({
     page: 1
   }),
-  mounted() {
-    this.page = Number(this.$route.query.page) || 1
-  },
   watch: {
     page() {
       this.$router.push({ query: { page: this.page } })
     }
+  },
+  mounted() {
+    this.page = Number(this.$route.query.page) || 1
   }
 }
 </script>

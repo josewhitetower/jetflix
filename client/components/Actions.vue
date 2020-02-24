@@ -1,35 +1,35 @@
 <template>
   <div class="flex items-center text-xs">
     <span
+      v-if="favorites"
       :class="{ 'bg-white text-gray-900': isFavorited }"
       class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Mark as favorite"
-      v-if="favorites"
       @click="onFavoriteClick"
     >
       <font-awesome-icon :icon="['fas', 'heart']" />
     </span>
     <span
+      v-if="bookmark"
       :class="{ 'bg-white text-gray-900': isBookmarked }"
       class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Bookmark"
-      v-if="bookmark"
       @click="onBookmarkClick"
     >
       <font-awesome-icon :icon="['fas', 'bookmark']" />
     </span>
     <span
+      v-if="share"
       class="w-6 h-6 md:h-8 md:w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Share"
-      v-if="share"
     >
       <font-awesome-icon :icon="['fas', 'share-alt']" />
     </span>
     <span
-      @click="$emit('showTrailer')"
       v-if="trailer"
       class="cursor-pointer hover:underline"
       title="Watch Trailer"
+      @click="$emit('showTrailer')"
     >
       <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
       <span class="">Watch Trailer</span>
@@ -65,7 +65,7 @@ export default {
       type: String,
       default: () => ''
     },
-    poster_path: {
+    posterPath: {
       type: String,
       default: () => ''
     }
@@ -97,7 +97,7 @@ export default {
       this.toggleFavorite({
         id: this.movieId,
         title: this.title,
-        poster_path: this.poster_path
+        poster_path: this.posterPath
       })
     }
   }
