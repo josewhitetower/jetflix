@@ -1,5 +1,7 @@
 <template>
   <form class="my-12 relative" @submit.prevent="handleSubmit">
+    <!-- using @input instead of value because on mobile the watcher on query
+    is not detected see: https://github.com/vuejs/vue/issues/8231 -->
     <input
       :value="query"
       type="text"
