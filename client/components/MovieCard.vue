@@ -20,7 +20,7 @@
         bookmark
         :title="title"
         :movie-id="movieId"
-        :poster_path="posterUrl"
+        :poster-path="posterUrl"
         class="justify-end"
       />
     </div>
