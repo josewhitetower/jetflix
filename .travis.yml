@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - 'stable'
 before_install:
-  - 'cd dist'
+  - 'cd clients'
 
 before_script:
   - 'npm install'
