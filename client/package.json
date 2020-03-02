@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "My astounding Nuxt.js project",
+  "description": "A movies database",
   "author": "Torreblanca, Jose",
   "private": true,
   "scripts": {
