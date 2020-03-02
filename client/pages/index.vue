@@ -37,6 +37,12 @@ export default {
     MoviesList,
     Pagination
   },
+  asyncData(context) {
+    const client = context.app.apolloProvider.defaultClient
+    return client.query({ query: getTrendingQuery }).then(({ data }) => {
+      return { moviesList: data.trending ? data.trending : [] }
+    })
+  },
   data() {
     return {
       moviesList: [],
@@ -66,16 +72,16 @@ export default {
     genres: {
       query: genresQuery
     },
-    trending: {
-      query: getTrendingQuery,
-      result(value) {
-        this.moviesList = value.data.trending
-        this.title = 'Trending'
-      },
-      skip() {
-        return this.$route.fullPath !== '/'
-      }
-    },
+    // trending: {
+    //   query: getTrendingQuery,
+    //   result(value) {
+    //     this.moviesList = value.data.trending
+    //     this.title = 'Trending'
+    //   },
+    //   skip() {
+    //     return this.$route.fullPath !== '/'
+    //   }
+    // },
     search: {
       query: searchQuery,
       variables() {
