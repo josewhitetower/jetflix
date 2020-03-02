@@ -1,16 +1,18 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="my-12 relative">
+  <form class="my-12 relative" @submit.prevent="handleSubmit">
+    <!-- using @input instead of v-model because on mobile the watcher on query
+    is not detected see: https://github.com/vuejs/vue/issues/8231 -->
     <input
       :value="query"
-      @input="(e) => (query = e.target.value)"
       type="text"
       class="block rounded p-2 w-full bg-gray-900"
       placeholder="Search movies..."
+      @input="(e) => (query = e.target.value)"
     />
     <font-awesome-icon
-      :icon="['fas', 'times']"
       v-if="query"
       class="absolute right-0 top-0 mt-3 mr-3 cursor-pointer text-lg"
+      :icon="['fas', 'times']"
       @click="query = ''"
     />
   </form>

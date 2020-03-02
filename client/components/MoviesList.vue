@@ -4,7 +4,7 @@
   >
     <li v-for="movie in movies" :key="movie.id">
       <MovieCard
-        :posterUrl="movie.poster_path"
+        :poster-url="movie.poster_path"
         :title="movie.title"
         :movie-id="movie.id"
       ></MovieCard>
@@ -15,14 +15,14 @@
 <script>
 import MovieCard from '@/components/MovieCard.vue'
 export default {
+  components: {
+    MovieCard
+  },
   props: {
     movies: {
       type: Array,
       default: () => []
     }
-  },
-  components: {
-    MovieCard
   }
 }
 </script>

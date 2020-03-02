@@ -5,13 +5,13 @@
   >
     <nuxt-link to="/" class="mr-3">Jetlfix</nuxt-link>
     <div class="relative">
-      <span @click="showBookmarks = !showBookmarks" class="cursor-pointer mr-3"
+      <span class="cursor-pointer mr-3" @click="showBookmarks = !showBookmarks"
         >Bookmarks ({{ bookmarks.length }})</span
       >
       <ul
+        v-if="bookmarks.length"
         :class="[showBookmarks ? 'opacity-100 visible' : 'opacity-0 invisible']"
         class="border border-gray-900 p-2 rounded-md transition duration-500 ease-in-out absolute bg-transparent overflow-auto w-56"
-        v-if="bookmarks.length"
         style="max-height: 300px"
       >
         <li

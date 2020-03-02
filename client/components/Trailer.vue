@@ -14,13 +14,13 @@
       <div v-if="loading">Loading...</div>
 
       <iframe
-        @load="loading = false"
+        :src="trailerUrl"
+        class="md:pb-64 lg:pb-64 absolute block left-0 mx-auto right-0 w-full h-full max-w-4xl"
+        allowfullscreen
         frameborder="0"
         width="1090"
         height="612"
-        allowfullscreen
-        class="md:pb-64 lg:pb-64 absolute block left-0 mx-auto right-0 w-full h-full max-w-4xl"
-        :src="trailerUrl"
+        @load="loading = false"
       ></iframe>
     </div>
   </div>
@@ -40,13 +40,13 @@ export default {
   mounted() {
     window.addEventListener('keydown', this.onKeyEscape)
   },
+  destroyed() {
+    window.removeEventListener('keydown', this.onKeyEscape)
+  },
   methods: {
     onKeyEscape() {
       this.$emit('close')
     }
-  },
-  destroyed() {
-    window.removeEventListener('keydown', this.onKeyEscape)
   }
 }
 </script>
