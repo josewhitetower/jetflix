@@ -14,5 +14,5 @@ script:
 
 deploy:
   provider: surge
-  project: ./dist/
+  project: dist
   domain: jt-jetflix.surge.sh
