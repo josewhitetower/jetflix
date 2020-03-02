@@ -12,9 +12,6 @@ script:
   - 'npm run lint'
   - 'npm run generate'
 
-before_deploy:
-  - 'cd client'
-
 deploy:
   provider: surge
   project: ./dist/
