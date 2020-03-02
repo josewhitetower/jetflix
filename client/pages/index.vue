@@ -14,7 +14,7 @@
     </div>
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
-      <h1 class="mb-8 font-bold">{{ title }}</h1>
+      <h1 class="mb-8 font-bold font-italic">{{ title }}</h1>
       <MoviesList :movies="moviesList" />
       <Pagination
         v-if="total_pages"
