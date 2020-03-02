@@ -12,7 +12,7 @@ script:
   - 'npm run lint'
   - 'npm run generate'
 
-deploy:
-  provider: surge
-  project: ./client/dist/
-  domain: jt-jetflix.surge.sh
+# deploy:
+#   provider: surge
+#   project: ./client/dist/
+#   domain: jt-jetflix.surge.sh
