@@ -14,7 +14,7 @@
     </div>
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
-      <h1 class="mb-8 font-bold font-italic">{{ title }}</h1>
+      <h1 class="mb-8 font-bold">{{ title }}</h1>
       <MoviesList :movies="moviesList" />
       <Pagination
         v-if="total_pages"
@@ -43,6 +43,11 @@ export default {
       return { moviesList: data.trending ? data.trending : [] }
     })
   },
+  computed: {
+    querySearch() {
+      return this.$route.query.search
+    }
+  },
   data() {
     return {
       moviesList: [],
@@ -54,17 +59,17 @@ export default {
     }
   },
   watch: {
-    $route() {
-      this.searchQuery = this.$route.query.search
-    },
+    // $route() {
+    //   this.searchQuery = this.$route.query.search
+    // },
     page() {
       this.$router.push({
-        query: { search: this.searchQuery, page: this.page }
+        query: { search: this.querySearch, page: this.page }
       })
     }
   },
   mounted() {
-    this.searchQuery = this.$route.query.search
+    // this.searchQuery = this.$route.query.search
     this.page = this.$route.query.page ? Number(this.$route.query.page) : 0
   },
 
@@ -85,16 +90,16 @@ export default {
     search: {
       query: searchQuery,
       variables() {
-        return { query: this.searchQuery, page: Number(this.$route.query.page) }
+        return { query: this.querySearch, page: Number(this.$route.query.page) }
       },
       result(value) {
         this.moviesList = value.data.search.results
         this.total_pages = value.data.search.total_pages
         this.page = value.data.search.page
-        this.title = `Search results: ${this.searchQuery}`
+        this.title = `Search results: ${this.querySearch}`
       },
       skip() {
-        return !this.searchQuery
+        return !this.querySearch
       }
     }
   }
