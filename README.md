@@ -23,12 +23,13 @@ Spotify-Tidal URL Converter uses a number of open source projects to work proper
 
 ### Installation
 
-Create a .env file under /server Folder and complete the following variable
+Create a .env file under /server folder and complete the following variable
 
-API_KEY=''
-API_URL=https://api.themoviedb.org/3/
-API_TOKEN=''
-
+```
+    API_KEY=''
+    API_URL=https://api.themoviedb.org/3/
+    API_TOKEN=''
+```
 Install the dependencies and devDependencies and start the server.
 
 Frontend:
