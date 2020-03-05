@@ -1,9 +1,4 @@
 <template>
-  <!-- <div v-if="$apollo.loading">Loading...</div>
-  <div v-else-if="movie">
-    <div>{{ movie.title }}</div>
-    <img :src="movie.poster_path" alt="" />
-  </div>-->
   <ApolloQuery
     :query="require('@/queries/queries').movieQuery"
     :variables="{ id: $route.params.id }"
@@ -107,18 +102,7 @@ export default {
   data: () => ({
     showTrailer: false
   }),
-  mounted() {
-    this.$nuxt.$on('search', (value) => {
-      this.$router.push(`/?search=${value}`)
-    })
-  },
   methods: {
-    src(
-      url = 'https://image.tmdb.org/t/p/w92/1DPUFG6QnGqzpvEaDEv7TaepycM.jpg'
-    ) {
-      const url342 = url.replace('/w500/', '/w342/')
-      return url342
-    },
     getYear(date) {
       return date.split('-')[0]
     },
