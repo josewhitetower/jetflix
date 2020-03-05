@@ -37,11 +37,10 @@ export default {
     MoviesList,
     Pagination
   },
-  asyncData(context) {
-    const client = context.app.apolloProvider.defaultClient
-    return client.query({ query: getTrendingQuery }).then(({ data }) => {
-      return { moviesList: data.trending ? data.trending : [] }
-    })
+  computed: {
+    querySearch() {
+      return this.$route.query.search
+    }
   },
   data() {
     return {
@@ -54,17 +53,13 @@ export default {
     }
   },
   watch: {
-    $route() {
-      this.searchQuery = this.$route.query.search
-    },
     page() {
       this.$router.push({
-        query: { search: this.searchQuery, page: this.page }
+        query: { search: this.querySearch, page: this.page }
       })
     }
   },
   mounted() {
-    // this.searchQuery = this.$route.query.search
     this.page = this.$route.query.page ? Number(this.$route.query.page) : 0
   },
 
@@ -72,29 +67,29 @@ export default {
     genres: {
       query: genresQuery
     },
-    // trending: {
-    //   query: getTrendingQuery,
-    //   result(value) {
-    //     this.moviesList = value.data.trending
-    //     this.title = 'Trending'
-    //   },
-    //   skip() {
-    //     return this.$route.fullPath !== '/'
-    //   }
-    // },
+    trending: {
+      query: getTrendingQuery,
+      result(value) {
+        this.moviesList = value.data.trending
+        this.title = 'Trending'
+      },
+      skip() {
+        return this.$route.fullPath !== '/'
+      }
+    },
     search: {
       query: searchQuery,
       variables() {
-        return { query: this.searchQuery, page: Number(this.$route.query.page) }
+        return { query: this.querySearch, page: Number(this.$route.query.page) }
       },
       result(value) {
         this.moviesList = value.data.search.results
         this.total_pages = value.data.search.total_pages
         this.page = value.data.search.page
-        this.title = `Search results: ${this.searchQuery}`
+        this.title = `Search results: ${this.querySearch}`
       },
       skip() {
-        return !this.searchQuery
+        return !this.querySearch
       }
     }
   }
