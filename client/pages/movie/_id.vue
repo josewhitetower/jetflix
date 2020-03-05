@@ -63,7 +63,7 @@
                   :src="`https://image.tmdb.org/t/p/w92${cast.profile_path}`"
                   alt=""
                   class="h-12 w-12 md:h-16 md:w-16 rounded-full object-cover border-2 -ml-3 cursor-pointer flex-shrink-0 bg-gray-900"
-                  :title="`${cast.name} (${cast.character})`"
+                  :title="castName(cast)"
                 />
               </div>
             </div>
@@ -121,6 +121,11 @@ export default {
     },
     getYear(date) {
       return date.split('-')[0]
+    },
+    castName(cast) {
+      return `${
+        cast.character ? cast.name + ' (' + cast.character + ')' : cast.name
+      }`
     }
   }
   // apollo: {
