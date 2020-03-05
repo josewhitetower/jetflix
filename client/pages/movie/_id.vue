@@ -85,13 +85,11 @@
           />
         </div>
       </div>
-      <!-- <div v-else>No result</div> -->
     </template>
   </ApolloQuery>
 </template>
 
 <script>
-// import { movieQuery } from '@/queries/queries'
 import Actions from '@/components/Actions'
 import Trailer from '@/components/Trailer'
 export default {

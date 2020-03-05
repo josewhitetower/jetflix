@@ -16,6 +16,7 @@ Jetflix web application that consumes movies from The Movie Database (TMDb) thro
 Spotify-Tidal URL Converter uses a number of open source projects to work properly:
 
 - [NuxtJS](https://nuxtjs.org) - The Progressive Vue.js Framework.
+- [GraphQL](https://graphql.org) - A query language for your API.
 - [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
 - [Netlify](https://www.netlify.com/) - All-in-one platform for automating modern web projects.
 - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
