@@ -11,7 +11,7 @@
         Prev
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 p-2">
       <span>Page {{ page }} of {{ totalPages }}</span>
     </div>
     <div class="flex-1 cursor-pointer">
