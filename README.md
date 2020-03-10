@@ -7,7 +7,8 @@ Jetflix web application that consumes movies from The Movie Database (TMDb) thro
 
 # Live Preview!
 
-- Front-End: https://jt-jetflix.netlify.com/
+- Front-End (SPA): https://jt-jetflix.netlify.com/
+- Front-End (SSR): https://jt-jetflix.herokuapp.com/
 - Back-End API: https://jt-jetflix.appspot.com/graphql
 
 ### Tech
