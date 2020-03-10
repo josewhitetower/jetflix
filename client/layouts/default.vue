@@ -8,7 +8,7 @@
       <a
         class="underline italic"
         href="https://www.themoviedb.org/"
-        rel="nofollow"
+        rel="nofollow noopener"
         title="The Movie Database"
         target="_blank"
         >The Movie Database</a
