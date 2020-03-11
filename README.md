@@ -51,6 +51,6 @@ $ npm run start
 
 ## License
 
-MIT
+ISC
 
 **Free Software, Hell Yeah!**
