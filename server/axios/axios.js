@@ -6,7 +6,7 @@ const instance = axios.create({
     Authorization: `Bearer ${process.env.API_TOKEN}`
   },
   params: {
-    apy_key: process.env.API_KEY
+    api_key: process.env.API_KEY
   }
 })
 
