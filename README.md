@@ -6,10 +6,8 @@
 Jetflix web application that consumes movies from The Movie Database (TMDb) through a GraphQL server. It allows users to search, bookmark and save movies as favorites. Deployed usign the Netlify platform CLI (it's never been easier).
 
 # Live Preview!
-
-- Front-End (SPA): https://jt-jetflix.netlify.com/
-- Front-End (SSR): https://jt-jetflix.herokuapp.com/
-- Back-End API: https://jt-jetflix.appspot.com/graphql
+- Back-End API: https://jt-jetflix-backend.herokuapp.com/graphql VISIT FIRST, PLEASE!!
+- Front-End (SPA): https://jt-jetflix.netlify.app/
 
 ### Tech
 
@@ -20,7 +18,6 @@ Spotify-Tidal URL Converter uses a number of open source projects to work proper
 - [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework for rapidly building custom designs.
 - [Netlify](https://www.netlify.com/) - All-in-one platform for automating modern web projects.
 - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
-- [Google Cloud Platform](https://cloud.google.com/) - Cloud Application Platform.
 
 ### Installation
 
