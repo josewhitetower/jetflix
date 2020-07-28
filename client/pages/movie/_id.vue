@@ -2,6 +2,7 @@
   <ApolloQuery
     :query="require('@/queries/queries').movieQuery"
     :variables="{ id: $route.params.id }"
+    @result="onResult"
   >
     <template v-slot="{ result: { error, data }, isLoading }">
       <div v-if="isLoading">Loading...</div>
@@ -97,8 +98,14 @@ export default {
     Actions,
     Trailer
   },
+  head() {
+    return {
+      title: this.title
+    }
+  },
   data: () => ({
-    showTrailer: false
+    showTrailer: false,
+    title: ''
   }),
   methods: {
     getYear(date) {
@@ -108,6 +115,12 @@ export default {
       return `${
         cast.character ? cast.name + ' (' + cast.character + ')' : cast.name
       }`
+    },
+    onResult(result) {
+      this.title =
+        result && result.data && result.data.movie && result.data.movie.title
+          ? result.data.movie.title
+          : ''
     }
   }
   // apollo: {
