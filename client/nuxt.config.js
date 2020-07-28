@@ -30,7 +30,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://jt-jetflix.appspot.com/graphql'
+        httpEndpoint: process.env.BACKEND_URL || 'http://localhost:4000/graphql'
       }
     }
   },
