@@ -17,6 +17,11 @@
 <script>
 import { genresQuery } from '@/queries/queries'
 export default {
+  head() {
+    return {
+      title: 'Genres'
+    }
+  },
   apollo: {
     genres: {
       query: genresQuery
