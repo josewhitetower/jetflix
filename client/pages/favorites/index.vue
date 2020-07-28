@@ -12,6 +12,11 @@ export default {
   components: {
     MoviesList
   },
+  head() {
+    return {
+      title: 'Favorites'
+    }
+  },
   computed: {
     ...mapGetters({
       favorites: 'favorites'
