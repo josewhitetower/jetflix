@@ -3,6 +3,7 @@
     <ApolloQuery
       :query="require('@/queries/queries').genreQuery"
       :variables="{ id: $route.params.id, page: page }"
+      @result="onResult"
     >
       <template v-slot="{ result: { error, data }, isLoading }">
         <div v-if="isLoading">Loading...</div>
@@ -30,8 +31,14 @@ export default {
     MoviesList,
     Pagination
   },
+  head() {
+    return {
+      title: this.title
+    }
+  },
   data: () => ({
-    page: 1
+    page: 1,
+    title: ''
   }),
   watch: {
     page() {
@@ -40,6 +47,15 @@ export default {
   },
   mounted() {
     this.page = Number(this.$route.query.page) || 1
+  },
+  methods: {
+    onResult(result) {
+      console.log(result)
+      this.title =
+        result && result.data && result.data.genre && result.data.genre.name
+          ? result.data.genre.name
+          : ''
+    }
   }
 }
 </script>
