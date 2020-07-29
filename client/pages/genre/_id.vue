@@ -50,7 +50,6 @@ export default {
   },
   methods: {
     onResult(result) {
-      console.log(result)
       this.title =
         result && result.data && result.data.genre && result.data.genre.name
           ? result.data.genre.name
