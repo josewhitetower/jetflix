@@ -22,6 +22,7 @@
       v-if="share"
       class="w-6 h-6 md:h-8 md:w-8 border-2 hover:bg-white cursor-pointer hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Share"
+      @click="onShareClick"
     >
       <font-awesome-icon :icon="['fas', 'share-alt']" />
     </span>
@@ -102,6 +103,18 @@ export default {
         title: this.title,
         poster_path: this.posterPath
       })
+    },
+    onShareClick() {
+      const dummy = document.createElement('input')
+      const text = window.location.href
+
+      document.body.appendChild(dummy)
+      dummy.value = text
+      dummy.select()
+      dummy.setSelectionRange(0, 99999) /* For mobile devices */
+      document.execCommand('copy')
+      document.body.removeChild(dummy)
+      alert(`Copied to clipboard!`)
     }
   }
 }
