@@ -71,9 +71,6 @@ export default {
       default: () => ''
     }
   },
-  data: () => ({
-    isCopied: false
-  }),
   computed: {
     ...mapGetters({
       isBookmarkedGetter: 'isBookmarked',
