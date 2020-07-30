@@ -112,9 +112,7 @@ export default {
       return date.split('-')[0]
     },
     castName(cast) {
-      return `${
-        cast.character ? `${cast.name} (${cast.character})` : cast.name
-      }`
+      return cast.character ? `${cast.name} (${cast.character})` : cast.name
     },
     onResult(result) {
       this.title =
