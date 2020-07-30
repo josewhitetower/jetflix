@@ -113,7 +113,7 @@ export default {
     },
     castName(cast) {
       return `${
-        cast.character ? cast.name + ' (' + cast.character + ')' : cast.name
+        cast.character ? `${cast.name} (${cast.character})` : cast.name
       }`
     },
     onResult(result) {
