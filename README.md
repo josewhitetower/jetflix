@@ -10,8 +10,7 @@ Jetflix web application that consumes movies from The Movie Database (TMDb) thro
 - Front-End (SPA): https://jt-jetflix.netlify.app/
 
 ### Tech
-
-Spotify-Tidal URL Converter uses a number of open source projects to work properly:
+Jetflix uses a number of open source projects to work properly:
 
 - [NuxtJS](https://nuxtjs.org) - The Progressive Vue.js Framework.
 - [GraphQL](https://graphql.org) - A query language for your API.
