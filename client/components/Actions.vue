@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-center text-xs">
     <span
-      v-if="favorites"
+      v-if="favorites && user"
       :class="{ 'bg-white text-gray-900': isFavorited }"
       class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Mark as favorite"
@@ -10,7 +10,7 @@
       <font-awesome-icon :icon="['fas', 'heart']" />
     </span>
     <span
-      v-if="bookmark"
+      v-if="bookmark && user"
       :class="{ 'bg-white text-gray-900': isBookmarked }"
       class="w-6 h-6 md:h-8 md:w-8 border-2 md:hover:bg-white cursor-pointer md:hover:text-gray-900 rounded-full mr-2 flex items-center justify-center"
       title="Bookmark"
@@ -74,7 +74,8 @@ export default {
   computed: {
     ...mapGetters({
       isBookmarkedGetter: 'isBookmarked',
-      isFavoritedGetter: 'isFavorited'
+      isFavoritedGetter: 'isFavorited',
+      user: 'user'
     }),
     isBookmarked() {
       return this.isBookmarkedGetter(this.movieId)
