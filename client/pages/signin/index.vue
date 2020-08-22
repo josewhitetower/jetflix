@@ -21,6 +21,7 @@
           type="password"
           name="password"
           required
+          autocomplete="current-password"
           placeholder="********"
           v-model="password"
           class="text-gray-800 rounded p-2"

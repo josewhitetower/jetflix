@@ -32,6 +32,7 @@
           type="password"
           name="password"
           required
+          autocomplete
           placeholder="********"
           v-model="password"
           class="text-gray-800 rounded p-2"

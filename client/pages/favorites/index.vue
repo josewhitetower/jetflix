@@ -21,7 +21,8 @@ export default {
     ...mapGetters({
       favorites: 'favorites'
     })
-  }
+  },
+  middleware: 'auth'
 }
 </script>
 

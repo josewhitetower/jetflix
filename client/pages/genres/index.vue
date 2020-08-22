@@ -26,7 +26,8 @@ export default {
     genres: {
       query: genresQuery
     }
-  }
+  },
+  middleware: 'auth'
 }
 </script>
 
