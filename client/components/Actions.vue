@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex'
+import { mapMutations, mapGetters, mapActions } from 'vuex'
 export default {
   props: {
     favorites: {
@@ -86,8 +86,10 @@ export default {
   },
   methods: {
     ...mapMutations({
-      toggleBookmark: 'toggleBookmark',
       toggleFavorite: 'toggleFavorite'
+    }),
+    ...mapActions({
+      toggleBookmark: 'toggleBookmark'
     }),
     onBookmarkClick() {
       this.toggleBookmark({

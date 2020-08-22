@@ -1,4 +1,4 @@
-import { auth } from 'firebase'
+import { auth, firestore } from 'firebase'
 
 export const state = () => ({
   bookmarks: [],
@@ -73,7 +73,7 @@ export const actions = {
       return Promise.reject(error)
     }
   },
-  signOut: async ({ commit }) => {
+  signOut: async () => {
     try {
       return await auth()
         .signOut()
@@ -82,6 +82,26 @@ export const actions = {
         })
     } catch (error) {
       return Promise.reject(error)
+    }
+  },
+  toggleBookmark: async ({ commit }, data) => {
+    try {
+      const user = auth().currentUser
+      if (user) {
+        const docRef = await firestore()
+          .doc('/bookmark/' + user.uid)
+          .collection('bookmarks')
+          .doc(data.id)
+        const doc = await docRef.get()
+        if (doc.exists) {
+          docRef.delete()
+        } else {
+          docRef.set(data)
+        }
+        commit('toggleBookmark', data)
+      }
+    } catch (error) {
+      return console.log(error)
     }
   }
 }
