@@ -40,11 +40,16 @@
     <div class="flex" v-if="!user">
       <nuxt-link to="/signup" class="cursor-pointer mr-3">
         <span title="Sign up">
-          <font-awesome-icon :icon="['fas', 'user-plus']" /> </span
+          <span class="hidden lg:inline">Sign up</span>
+          <font-awesome-icon
+            :icon="['fas', 'user-plus']"
+            class="lg:hidden"
+          /> </span
       ></nuxt-link>
       <nuxt-link to="/signin" class="cursor-pointer mr-3">
         <span title="Sign in">
-          <font-awesome-icon :icon="['fas', 'sign-in-alt']" />
+          <span class="hidden lg:inline">Sign in</span>
+          <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="lg:hidden" />
         </span>
       </nuxt-link>
     </div>
