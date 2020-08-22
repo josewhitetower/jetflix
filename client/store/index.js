@@ -54,10 +54,21 @@ export const actions = {
       )
       if (response.user) {
         await response.user.updateProfile({ displayName })
+        return Promise.resolve()
       }
-      return Promise.resolve()
     } catch (error) {
-      console.log(error)
+      return Promise.reject(error)
+    }
+  },
+  signInWithEmailAndPassword: async (_, data) => {
+    try {
+      const { email, password } = data
+      const response = await auth().signInWithEmailAndPassword(email, password)
+      if (response.user) {
+        return Promise.resolve()
+      }
+    } catch (error) {
+      return Promise.reject(error)
     }
   }
 }
