@@ -28,8 +28,7 @@
     "lazysizes": "^5.2.0",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
-    "tailwindcss": "^1.2.0",
-    "vuex-persist": "^2.2.0"
+    "tailwindcss": "^1.2.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

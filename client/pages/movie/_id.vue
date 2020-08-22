@@ -43,7 +43,7 @@
               :title="data.movie.title"
               :poster-path="data.movie.poster_path"
               class="mb-8"
-              @showTrailer="showTrailer = true"
+              @show-trailer="showTrailer = true"
             />
             <h2 class="font-semibold">{{ data.movie.tagline }}</h2>
 

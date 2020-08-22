@@ -39,7 +39,7 @@ export default {
    */
   plugins: [
     '~/plugins/lazysizes.client.js',
-    { src: '~/plugins/vuex-persist', ssr: false }
+    // { src: '~/plugins/vuex-persist', ssr: false }
   ],
   /*
    ** Nuxt.js dev-modules

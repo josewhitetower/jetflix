@@ -27,11 +27,17 @@ export const mutations = {
   },
   setAuthUser(state, user) {
     state.user = user
+  },
+  clearFavorites(state) {
+    state.favorites = []
+  },
+  clearBookmarks(state) {
+    state.bookmarks = []
   }
 }
 
 export const actions = {
-  setAuthUser: ({ commit }) => {
+  setAuthUser: async ({ commit }) => {
     try {
       const user = auth().currentUser
       if (user) {
@@ -40,8 +46,28 @@ export const actions = {
           email: user.email,
           name: user.displayName
         })
+
+        // get the favorites
+        const favoritesRef = await firestore()
+          .doc('/users/' + user.uid)
+          .collection('favorites')
+          .get()
+        favoritesRef.docs.forEach((doc) => {
+          commit('toggleFavorite', doc.data())
+        })
+
+        // get the bookmarks
+        const bookmarksRef = await firestore()
+          .doc('/users/' + user.uid)
+          .collection('bookmarks')
+          .get()
+        bookmarksRef.docs.forEach((doc) => {
+          commit('toggleBookmark', doc.data())
+        })
       } else {
         commit('setAuthUser', null)
+        commit('clearFavorites')
+        commit('clearBookmarks')
       }
     } catch (error) {
       console.log(error)
@@ -89,7 +115,7 @@ export const actions = {
       const user = auth().currentUser
       if (user) {
         const docRef = await firestore()
-          .doc('/bookmark/' + user.uid)
+          .doc('/users/' + user.uid)
           .collection('bookmarks')
           .doc(data.id)
         const doc = await docRef.get()
@@ -99,6 +125,26 @@ export const actions = {
           docRef.set(data)
         }
         commit('toggleBookmark', data)
+      }
+    } catch (error) {
+      return console.log(error)
+    }
+  },
+  toggleFavorite: async ({ commit }, data) => {
+    try {
+      const user = auth().currentUser
+      if (user) {
+        const docRef = await firestore()
+          .doc('/users/' + user.uid)
+          .collection('favorites')
+          .doc(data.id)
+        const doc = await docRef.get()
+        if (doc.exists) {
+          docRef.delete()
+        } else {
+          docRef.set(data)
+        }
+        commit('toggleFavorite', data)
       }
     } catch (error) {
       return console.log(error)

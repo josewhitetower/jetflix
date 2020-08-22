@@ -30,7 +30,7 @@
       v-if="trailer"
       class="cursor-pointer hover:underline"
       title="Watch Trailer"
-      @click="$emit('showTrailer')"
+      @click="$emit('show-trailer')"
     >
       <font-awesome-icon :icon="['fas', 'play']" class="mx-2" />
       <span class="">Watch Trailer</span>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   props: {
     favorites: {
@@ -85,11 +85,9 @@ export default {
     }
   },
   methods: {
-    ...mapMutations({
-      toggleFavorite: 'toggleFavorite'
-    }),
     ...mapActions({
-      toggleBookmark: 'toggleBookmark'
+      toggleBookmark: 'toggleBookmark',
+      toggleFavorite: 'toggleFavorite'
     }),
     onBookmarkClick() {
       this.toggleBookmark({
