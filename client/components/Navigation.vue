@@ -38,12 +38,24 @@
       >
     </div>
     <div class="flex" v-if="!user">
-      <nuxt-link to="/signin" class="cursor-pointer mr-3">Sign in</nuxt-link>
-      <nuxt-link to="/signup" class="cursor-pointer mr-3">Sign up</nuxt-link>
+      <nuxt-link to="/signup" class="cursor-pointer mr-3">
+        <span title="Sign up">
+          <font-awesome-icon :icon="['fas', 'user-plus']" /> </span
+      ></nuxt-link>
+      <nuxt-link to="/signin" class="cursor-pointer mr-3">
+        <span title="Sign in">
+          <font-awesome-icon :icon="['fas', 'sign-in-alt']" />
+        </span>
+      </nuxt-link>
     </div>
-    <span class="cursor-pointer mr-3" @click="signOut" v-if="user"
-      >Sign out</span
+    <span
+      class="cursor-pointer mr-3"
+      @click="signOut"
+      v-if="user"
+      title="Sign out"
     >
+      <font-awesome-icon :icon="['fas', 'sign-out-alt']" />
+    </span>
   </div>
 </template>
 

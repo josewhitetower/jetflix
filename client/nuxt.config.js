@@ -72,7 +72,10 @@ export default {
               'faBookmark',
               'faShareAlt',
               'faAngleDoubleRight',
-              'faAngleDoubleLeft'
+              'faAngleDoubleLeft',
+              'faSignOutAlt',
+              'faUserPlus',
+              'faSignInAlt'
             ]
           },
           {
