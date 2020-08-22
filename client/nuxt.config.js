@@ -81,6 +81,31 @@ export default {
           }
         ]
       }
+    ],
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyCuzm3tfPDPrhYygJATLcMnUegociW8UmM',
+          authDomain: 'jt-jetflix.firebaseapp.com',
+          databaseURL: 'https://jt-jetflix.firebaseio.com',
+          projectId: 'jt-jetflix',
+          storageBucket: 'jt-jetflix.appspot.com',
+          messagingSenderId: '1095176938728',
+          appId: '1:1095176938728:web:7cd8105edbfd5611e9d55d',
+          measurementId: 'G-HND3BX7CZL'
+        },
+        services: {
+          auth: {
+            persistence: 'local',
+            initialize: {
+              onAuthStateChangedMutation: null,
+              onAuthStateChangedAction: 'setAuthUser'
+            }
+          },
+          firestore: true
+        }
+      }
     ]
   ],
   /*

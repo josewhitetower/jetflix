@@ -1,6 +1,9 @@
+import { auth } from 'firebase'
+
 export const state = () => ({
   bookmarks: [],
-  favorites: []
+  favorites: [],
+  user: null
 })
 
 // I chose to not use actions because there's no ayncronous operation here
@@ -23,6 +26,24 @@ export const mutations = {
     } else {
       state.favorites.push(data)
     }
+  },
+  setAuthUser(state, user) {
+    state.user = user
+  }
+}
+
+export const actions = {
+  setAuthUser: ({ commit }) => {
+    try {
+      const user = auth().currentUser
+      if (user) {
+        commit('setAuthUser', {
+          id: user.uid,
+          email: user.email,
+          name: user.displayName
+        })
+      }
+    } catch (error) {}
   }
 }
 
