@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 mt-24 pb-8 relative pb-12">
     <Navigation />
-    <Search />
+    <Search v-if="showSearchBar" />
     <nuxt />
     <footer class="absolute bottom-0 py-4 text-center text-sm w-full">
       Powered by
@@ -24,6 +24,17 @@ export default {
   components: {
     Search,
     Navigation
+  },
+  computed: {
+    isSignInRoute() {
+      return this.$route.path === '/signin'
+    },
+    isSignUpRoute() {
+      return this.$route.path === '/signup'
+    },
+    showSearchBar() {
+      return !(this.isSignInRoute || this.isSignUpRoute)
+    }
   }
 }
 </script>
