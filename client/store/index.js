@@ -40,6 +40,8 @@ export const actions = {
           email: user.email,
           name: user.displayName
         })
+      } else {
+        commit('setAuthUser', null)
       }
     } catch (error) {
       console.log(error)
@@ -70,6 +72,17 @@ export const actions = {
     } catch (error) {
       return Promise.reject(error)
     }
+  },
+  signOut: async ({ commit }) => {
+    try {
+      return await auth()
+        .signOut()
+        .then(() => {
+          return Promise.resolve()
+        })
+    } catch (error) {
+      return Promise.reject(error)
+    }
   }
 }
 
@@ -85,5 +98,8 @@ export const getters = {
   },
   bookmarks: (state) => {
     return state.bookmarks
+  },
+  user: (state) => {
+    return state.user
   }
 }
