@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="mb-10 transform z-20 pb-3 hidden md:block">
-      <div class=" flex flex-wrap">
+      <div class="flex flex-wrap" v-if="user">
         <nuxt-link
           v-for="genre in genres"
           :key="genre.id"
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { getTrendingQuery, searchQuery, genresQuery } from '@/queries/queries'
 import MoviesList from '@/components/MoviesList.vue'
 import Pagination from '@/components/Pagination.vue'
@@ -40,7 +41,10 @@ export default {
   computed: {
     querySearch() {
       return this.$route.query.search
-    }
+    },
+    ...mapGetters({
+      user: 'user'
+    })
   },
   data() {
     return {

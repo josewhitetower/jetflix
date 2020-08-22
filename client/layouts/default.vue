@@ -1,7 +1,7 @@
 <template>
-  <div class="container mx-auto px-4 mt-24 pb-8 relative pb-12">
+  <div class="container mx-auto px-4 mt-24 relative pb-12">
     <Navigation />
-    <Search v-if="showSearchBar" />
+    <Search v-if="user" />
     <nuxt />
     <footer class="absolute bottom-0 py-4 text-center text-sm w-full">
       Powered by
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Search from '@/components/Search.vue'
 import Navigation from '@/components/Navigation.vue'
 export default {
@@ -26,15 +27,9 @@ export default {
     Navigation
   },
   computed: {
-    isSignInRoute() {
-      return this.$route.path === '/signin'
-    },
-    isSignUpRoute() {
-      return this.$route.path === '/signup'
-    },
-    showSearchBar() {
-      return !(this.isSignInRoute || this.isSignUpRoute)
-    }
+    ...mapGetters({
+      user: 'user'
+    })
   }
 }
 </script>

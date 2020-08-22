@@ -33,7 +33,7 @@
       <nuxt-link v-if="user" to="/favorites" class="cursor-pointer mr-3"
         >Favorites</nuxt-link
       >
-      <nuxt-link to="/genres" class="cursor-pointer mr-3 md:hidden"
+      <nuxt-link v-if="user" to="/genres" class="cursor-pointer mr-3 md:hidden"
         >Genres</nuxt-link
       >
     </div>
