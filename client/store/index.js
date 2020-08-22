@@ -41,7 +41,24 @@ export const actions = {
           name: user.displayName
         })
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
+  },
+  createUserWithEmailAndPassword: async (_, data) => {
+    try {
+      const { email, displayName, password } = data
+      const response = await auth().createUserWithEmailAndPassword(
+        email,
+        password
+      )
+      if (response.user) {
+        await response.user.updateProfile({ displayName })
+      }
+      return Promise.resolve()
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
