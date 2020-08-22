@@ -59,7 +59,8 @@
       v-if="user"
       title="Sign out"
     >
-      <font-awesome-icon :icon="['fas', 'sign-out-alt']" />
+      <span class="hidden lg:inline">Sign out</span>
+      <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="lg:hidden" />
     </span>
   </div>
 </template>
