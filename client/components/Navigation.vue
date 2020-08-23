@@ -105,7 +105,7 @@ export default {
       this.$router.push(`/movie/${id}`)
     },
     signOut() {
-      this.$store.dispatch('signOut').then(() => this.$router.push('/'))
+      this.$store.dispatch('SIGN_OUT').then(() => this.$router.push('/'))
     }
   }
 }

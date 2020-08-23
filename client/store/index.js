@@ -37,7 +37,7 @@ export const mutations = {
 }
 
 export const actions = {
-  setAuthUser: async ({ commit }) => {
+  SET_AUTH_USER: async ({ commit }) => {
     try {
       const user = auth().currentUser
       if (user) {
@@ -73,7 +73,7 @@ export const actions = {
       console.log(error)
     }
   },
-  createUserWithEmailAndPassword: async (_, data) => {
+  CREATE_USER_WITH_EMAIL_AND_PASSWORD: async (_, data) => {
     try {
       const { email, displayName, password } = data
       const response = await auth().createUserWithEmailAndPassword(
@@ -88,7 +88,7 @@ export const actions = {
       return Promise.reject(error)
     }
   },
-  signInWithEmailAndPassword: async (_, data) => {
+  SIGN_IN_WITH_EMAIL_AND_PASSWORD: async (_, data) => {
     try {
       const { email, password } = data
       const response = await auth().signInWithEmailAndPassword(email, password)
@@ -99,7 +99,7 @@ export const actions = {
       return Promise.reject(error)
     }
   },
-  signOut: async () => {
+  SIGN_OUT: async () => {
     try {
       return await auth()
         .signOut()
@@ -110,7 +110,7 @@ export const actions = {
       return Promise.reject(error)
     }
   },
-  toggleBookmark: async ({ commit }, data) => {
+  TOGGLE_BOOKMARK: async ({ commit }, data) => {
     try {
       const user = auth().currentUser
       if (user) {
@@ -130,7 +130,7 @@ export const actions = {
       return console.log(error)
     }
   },
-  toggleFavorite: async ({ commit }, data) => {
+  TOGGLE_FAVORITE: async ({ commit }, data) => {
     try {
       const user = auth().currentUser
       if (user) {

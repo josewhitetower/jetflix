@@ -103,7 +103,7 @@ export default {
             persistence: 'local',
             initialize: {
               onAuthStateChangedMutation: null,
-              onAuthStateChangedAction: 'setAuthUser'
+              onAuthStateChangedAction: 'SET_AUTH_USER'
             }
           },
           firestore: true

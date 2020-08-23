@@ -63,7 +63,7 @@ export default {
   methods: {
     createUserWithEmailAndPassword() {
       this.$store
-        .dispatch('createUserWithEmailAndPassword', {
+        .dispatch('CREATE_USER_WITH_EMAIL_AND_PASSWORD', {
           email: this.email,
           password: this.password,
           displayName: this.displayName

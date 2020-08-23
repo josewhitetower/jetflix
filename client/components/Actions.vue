@@ -86,8 +86,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      toggleBookmark: 'toggleBookmark',
-      toggleFavorite: 'toggleFavorite'
+      toggleBookmark: 'TOGGLE_BOOKMARK',
+      toggleFavorite: 'TOGGLE_FAVORITE'
     }),
     onBookmarkClick() {
       this.toggleBookmark({
