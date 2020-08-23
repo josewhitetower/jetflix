@@ -21,6 +21,7 @@
           <input
             type="email"
             name="email"
+            autocomplete="username"
             required
             placeholder="john@doe.com"
             v-model="email"
