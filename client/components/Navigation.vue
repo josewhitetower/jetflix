@@ -53,27 +53,38 @@
         </span>
       </nuxt-link>
     </div>
-    <span
-      class="cursor-pointer mr-3"
-      @click="signOut"
-      v-if="user"
-      title="Sign out"
-    >
-      <span class="hidden lg:inline">Sign out</span>
-      <font-awesome-icon :icon="['fas', 'sign-out-alt']" class="lg:hidden" />
-    </span>
+    <div v-if="user" class="relative">
+      <span
+        class="cursor-pointer mr-3"
+        title="Admin"
+        @click="showAdmin = !showAdmin"
+      >
+        <span class="hidden lg:inline">Admin</span>
+        <font-awesome-icon :icon="['fas', 'user']" class="lg:hidden" />
+      </span>
+      <Admin
+        :user="user"
+        @sign-out="signOut"
+        :class="[showAdmin ? 'opacity-100 visible' : 'opacity-0 invisible']"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import Admin from './Admin'
 export default {
+  components: {
+    Admin
+  },
   data() {
     return {
       view: {
         isAtTopOfPage: true
       },
       showBookmarks: false,
+      showAdmin: false,
       showGenres: false
     }
   },

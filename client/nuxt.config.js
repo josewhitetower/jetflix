@@ -75,7 +75,8 @@ export default {
               'faAngleDoubleLeft',
               'faSignOutAlt',
               'faUserPlus',
-              'faSignInAlt'
+              'faSignInAlt',
+              'faUser'
             ]
           },
           {

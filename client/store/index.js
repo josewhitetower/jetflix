@@ -149,6 +149,19 @@ export const actions = {
     } catch (error) {
       return console.log(error)
     }
+  },
+  RESET_PASSWORD: async () => {
+    try {
+      const user = auth().currentUser
+      return await auth()
+        .sendPasswordResetEmail(user.email)
+        .then(() => {
+          return Promise.resolve()
+        })
+    } catch (error) {
+      console.log(error)
+      return Promise.reject(error)
+    }
   }
 }
 
