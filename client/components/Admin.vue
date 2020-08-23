@@ -19,7 +19,10 @@
       >
         Reset Password
       </button>
-      <button class="border border-gray-100 p-2 rounded mb-2 hover:bg-gray-800">
+      <button
+        class="border border-gray-100 p-2 rounded mb-2 hover:bg-gray-800"
+        @click="onDeleteUserClick"
+      >
         Delete Account
       </button>
     </div>
@@ -49,7 +52,8 @@ export default {
   }),
   methods: {
     ...mapActions({
-      resetPassword: 'RESET_PASSWORD'
+      resetPassword: 'RESET_PASSWORD',
+      deleteUser: 'DELETE_USER'
     }),
     async onResetPasswordClick() {
       try {
@@ -58,6 +62,16 @@ export default {
             'Password reset confirmation sent. Please check your email inbox'
           setTimeout(() => (this.message = ''), 5000)
         })
+      } catch (error) {
+        this.error = error.message
+        setTimeout(() => (this.error = ''), 5000)
+      }
+    },
+    async onDeleteUserClick() {
+      try {
+        if (confirm('Delete user?')) {
+          await this.deleteUser()
+        }
       } catch (error) {
         this.error = error.message
         setTimeout(() => (this.error = ''), 5000)

@@ -161,6 +161,14 @@ export const actions = {
     } catch (error) {
       return Promise.reject(error)
     }
+  },
+  DELETE_USER: async () => {
+    try {
+      const user = auth().currentUser
+      return await user.delete().then(() => Promise.resolve())
+    } catch (error) {
+      return Promise.reject(error)
+    }
   }
 }
 
