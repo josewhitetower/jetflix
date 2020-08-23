@@ -58,7 +58,6 @@ export default {
             'Password reset confirmation sent. Please check your email inbox'
         })
       } catch (error) {
-        console.log(error)
         this.error = error.message
       }
     }
