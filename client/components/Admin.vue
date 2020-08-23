@@ -56,9 +56,11 @@ export default {
         await this.resetPassword().then(() => {
           this.message =
             'Password reset confirmation sent. Please check your email inbox'
+          setTimeout(() => (this.message = ''), 5000)
         })
       } catch (error) {
         this.error = error.message
+        setTimeout(() => (this.error = ''), 5000)
       }
     }
   }
