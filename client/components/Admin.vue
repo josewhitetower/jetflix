@@ -14,12 +14,14 @@
     <span class="text-xs text-red-500 my-2" v-if="error">{{ error }}</span>
     <div class="text-xs">
       <button
+        :class="{ 'animate-pulse': isLoading }"
         class="border border-gray-100 p-2 rounded mb-2 hover:bg-gray-800"
         @click="onResetPasswordClick"
       >
         Reset Password
       </button>
       <button
+        :class="{ 'animate-pulse': isLoading }"
         class="border border-gray-100 p-2 rounded mb-2 hover:bg-gray-800"
         @click="onDeleteUserClick"
       >
@@ -48,7 +50,8 @@ export default {
   },
   data: () => ({
     message: '',
-    error: ''
+    error: '',
+    isLoading: false
   }),
   methods: {
     ...mapActions({
@@ -57,23 +60,30 @@ export default {
     }),
     async onResetPasswordClick() {
       try {
+        this.isLoading = true
         await this.resetPassword().then(() => {
           this.message =
             'Password reset confirmation sent. Please check your email inbox'
+          this.isLoading = false
           setTimeout(() => (this.message = ''), 5000)
         })
       } catch (error) {
         this.error = error.message
+        this.isLoading = false
         setTimeout(() => (this.error = ''), 5000)
       }
     },
     async onDeleteUserClick() {
       try {
         if (confirm('Delete user?')) {
-          await this.deleteUser()
+          this.isLoading = true
+          await this.deleteUser().then(() => {
+            this.isLoading = false
+          })
         }
       } catch (error) {
         this.error = error.message
+        this.isLoading = false
         setTimeout(() => (this.error = ''), 5000)
       }
     }
