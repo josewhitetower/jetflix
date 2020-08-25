@@ -3,7 +3,8 @@ import { auth, firestore } from 'firebase'
 export const state = () => ({
   bookmarks: [],
   favorites: [],
-  user: null
+  user: null,
+  notification: null
 })
 
 // https://vuex.vuejs.org/guide/actions.html
@@ -33,6 +34,9 @@ export const mutations = {
   },
   clearBookmarks(state) {
     state.bookmarks = []
+  },
+  showNotification(state, data) {
+    state.notification = data
   }
 }
 
@@ -120,9 +124,21 @@ export const actions = {
           .doc(data.id)
         const doc = await docRef.get()
         if (doc.exists) {
-          docRef.delete()
+          docRef.delete().then(() => {
+            commit('showNotification', {
+              type: 'success',
+              message: 'Removed from Bookmarks'
+            })
+            setTimeout(() => commit('showNotification', null), 5000)
+          })
         } else {
-          docRef.set(data)
+          docRef.set(data).then(() => {
+            commit('showNotification', {
+              type: 'success',
+              message: 'Added to Bookmarks'
+            })
+            setTimeout(() => commit('showNotification', null), 5000)
+          })
         }
         commit('toggleBookmark', data)
       }
@@ -140,9 +156,21 @@ export const actions = {
           .doc(data.id)
         const doc = await docRef.get()
         if (doc.exists) {
-          docRef.delete()
+          docRef.delete().then(() => {
+            commit('showNotification', {
+              type: 'success',
+              message: 'Removed from Favorites'
+            })
+            setTimeout(() => commit('showNotification', null), 5000)
+          })
         } else {
-          docRef.set(data)
+          docRef.set(data).then(() => {
+            commit('showNotification', {
+              type: 'success',
+              message: 'Added to Favorites'
+            })
+            setTimeout(() => commit('showNotification', null), 5000)
+          })
         }
         commit('toggleFavorite', data)
       }
@@ -187,5 +215,8 @@ export const getters = {
   },
   user: (state) => {
     return state.user
+  },
+  notification: (state) => {
+    return state.notification
   }
 }

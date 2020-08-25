@@ -1,6 +1,12 @@
 <template>
   <div class="container mx-auto px-4 mt-24 relative pb-12">
     <Navigation />
+    <div
+      class="fixed animate-pulse bg-green-600 p-2 rounded text-sm z-10"
+      v-if="notification"
+    >
+      {{ notification.message }}
+    </div>
     <Search v-if="user" />
     <nuxt />
     <footer class="absolute bottom-0 py-4 text-center text-sm w-full">
@@ -28,7 +34,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      user: 'user'
+      user: 'user',
+      notification: 'notification'
     })
   }
 }
