@@ -3,7 +3,7 @@
     <div class="flex justify-center">
       <form
         @submit.prevent="createUserWithEmailAndPassword"
-        class="border border-gray-100 rounded py-4 px-8 flex flex-col"
+        class="border border-gray-100 flex flex-col md:px-8 px-2 py-4 rounded"
       >
         <div class="my-4 flex items-center justify-between">
           <label class="mr-3" for="displayName">Name</label>
