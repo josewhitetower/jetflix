@@ -12,7 +12,7 @@
       />
     </nuxt-link>
     <div
-      class="md:opacity-0 group-hover:opacity-100 absolute bottom-0 text-white bg-transparent w-full z-10 transition duration-500 ease-in-out flex-col p-2"
+      class="lg:opacity-0 group-hover:opacity-100 absolute bottom-0 text-white bg-transparent w-full z-10 transition duration-500 ease-in-out flex-col p-2"
     >
       <p class="mb-1 font-semibold text-sm">{{ title }}</p>
       <Actions
