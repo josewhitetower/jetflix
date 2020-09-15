@@ -1,8 +1,6 @@
 export default {
-  mode: 'spa',
-  generate: {
-    fallback: true
-  },
+  ssr: true,
+  target: 'static',
   /*
    ** Headers of the page
    */
