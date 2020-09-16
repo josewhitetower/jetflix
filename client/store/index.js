@@ -1,4 +1,4 @@
-import { auth, firestore } from 'firebase'
+import { auth, firestore } from 'firebase/app'
 
 export const state = () => ({
   bookmarks: [],

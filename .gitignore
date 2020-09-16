@@ -1,3 +1,5 @@
 */node_modules
 */.env
 client/.nuxt
+# Local Netlify folder
+.netlify
