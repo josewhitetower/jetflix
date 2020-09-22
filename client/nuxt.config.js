@@ -1,7 +1,9 @@
 export default {
   target: 'server',
   ssr: false,
-
+  generate: {
+    fallback: true
+  },
   /*
    ** Headers of the page
    */
