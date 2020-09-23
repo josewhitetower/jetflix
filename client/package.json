@@ -28,6 +28,7 @@
     "lazysizes": "^5.2.0",
     "nuxt": "^2.14.5",
     "nuxt-fontawesome": "^0.4.0",
+    "regenerator-runtime": "^0.13.7",
     "tailwindcss": "^1.7.3"
   },
   "devDependencies": {
