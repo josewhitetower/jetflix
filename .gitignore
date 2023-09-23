@@ -3,3 +3,5 @@
 client/.nuxt
 # Local Netlify folder
 .netlify
+.build
+.serverless

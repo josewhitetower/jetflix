@@ -19,7 +19,10 @@
     "graphql": "^16.8.1"
   },
   "devDependencies": {
+    "@types/node": "^20.6.3",
     "nodemon": "^2.0.4",
-    "serverless-offline": "^13.0.0"
+    "serverless-offline": "^13.0.0",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.2.2"
   }
 }

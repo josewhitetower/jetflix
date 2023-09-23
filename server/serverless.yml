@@ -58,12 +58,13 @@ provider:
 #    - include-me.js
 #    - include-me-dir/**
 plugins:
+  - serverless-plugin-typescript
   - serverless-offline
 functions:
   app:
     handler: app.graphqlHandler
     events:
-      - http:
+      - httpApi:
           path: /graphql
           method: post
           cors: true
