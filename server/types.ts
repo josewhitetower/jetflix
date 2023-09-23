@@ -16,16 +16,37 @@ export type Scalars = {
 
 export type Movie = {
   __typename?: 'Movie';
+  cast: Array<Person>;
+  homepage: Scalars['String']['output'];
   id: Scalars['String']['output'];
+  original_language: Scalars['String']['output'];
   overview: Scalars['String']['output'];
   poster_path: Scalars['String']['output'];
   release_date: Scalars['String']['output'];
   runtime: Scalars['String']['output'];
   tagline: Scalars['String']['output'];
   title: Scalars['String']['output'];
+  trailer?: Maybe<Scalars['String']['output']>;
+  vote_average: Scalars['Float']['output'];
+};
+
+export type Person = {
+  __typename?: 'Person';
+  cast_id: Scalars['String']['output'];
+  character: Scalars['String']['output'];
+  id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+  profile_path: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
   trending?: Maybe<Array<Maybe<Movie>>>;
+};
+
+export type Search = {
+  __typename?: 'Search';
+  page: Scalars['Int']['output'];
+  results?: Maybe<Array<Movie>>;
+  total_pages: Scalars['Int']['output'];
 };

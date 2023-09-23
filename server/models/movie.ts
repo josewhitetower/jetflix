@@ -1,4 +1,4 @@
-import { Movie } from "../types"
+import { Movie } from '../types'
 
 const axios = require('../axios/axios')
 const MovieModel = {
@@ -6,7 +6,7 @@ const MovieModel = {
     const trendingUrl = `/trending/movie/day`
     return axios
       .get(trendingUrl)
-      .then((response: {data: {results: Movie[]}}) => response.data.results)
+      .then((response: { data: { results: Movie[] } }) => response.data.results)
       .catch((error: Error) => ({ error: error }))
   },
 
@@ -14,7 +14,7 @@ const MovieModel = {
     const movieUrl = `/movie/${movieId}`
     return axios
       .get(movieUrl)
-      .then((response: {data: Movie}) => response.data)
+      .then((response: { data: Movie }) => response.data)
       .catch((error: Error) => ({ error: error }))
   },
 
@@ -42,7 +42,7 @@ const MovieModel = {
       .catch((error) => console.log(error))
   },
 
-  getCast: (movieId) => {
+  getCast: (movieId: string) => {
     const creditsUrl = `/movie/${movieId}/credits`
     return axios
       .get(creditsUrl)
@@ -54,15 +54,15 @@ const MovieModel = {
       .catch((error) => console.log(error))
   },
 
-  search: (query, page = 1) => {
+  search: (query: string, page = 1) => {
     const creditsUrl = `search/movie?query=${query}&page=${page}`
     return axios
       .get(creditsUrl)
-      .then((response) => {
+      .then((response: { data: Movie[] }) => {
         return response.data
       })
-      .catch((error) => console.log(error))
-  }
+      .catch((error: Error) => console.log(error))
+  },
 }
 
-module.exports = MovieModel
+export default MovieModel

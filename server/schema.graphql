@@ -6,7 +6,27 @@ type Movie {
   release_date: String!
   runtime: String!
   poster_path: String!
+  vote_average: Float!
+  homepage: String!
+  original_language: String!
+  trailer: String
+  cast: [Person!]!
 }
+
+type Person {
+  id: String!
+  cast_id: String!
+  character: String!
+  name: String!
+  profile_path: String!
+}
+
+type Search {
+  results: [Movie!]
+  page: Int!
+  total_pages: Int!
+}
+
 type Query {
   trending: [Movie]
 }
