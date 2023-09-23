@@ -1,22 +1,24 @@
+import { Movie } from "../types"
+
 const axios = require('../axios/axios')
-const Movie = {
-  trending: () => {
+const MovieModel = {
+  trending: (): Movie[] => {
     const trendingUrl = `/trending/movie/day`
     return axios
       .get(trendingUrl)
-      .then((response) => response.data.results)
-      .catch((error) => ({ error: error }))
+      .then((response: {data: {results: Movie[]}}) => response.data.results)
+      .catch((error: Error) => ({ error: error }))
   },
 
-  findById: (movieId) => {
+  findById: (movieId: string) => {
     const movieUrl = `/movie/${movieId}`
     return axios
       .get(movieUrl)
-      .then((response) => response.data)
-      .catch((error) => ({ error: error }))
+      .then((response: {data: Movie}) => response.data)
+      .catch((error: Error) => ({ error: error }))
   },
 
-  findByGenreIdResponse: (genreId, page = 1) => {
+  findByGenreIdResponse: (genreId: string, page = 1) => {
     const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
     return axios
       .get(discoverUrl)
@@ -63,4 +65,4 @@ const Movie = {
   }
 }
 
-module.exports = Movie
+module.exports = MovieModel

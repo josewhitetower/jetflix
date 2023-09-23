@@ -1,11 +1,11 @@
 type Movie {
-  id: String
-  title: String
-  overview: String
-  tagline: String
-  release_date: String
-  runtime: String
-  poster_path: String
+  id: String!
+  title: String!
+  overview: String!
+  tagline: String!
+  release_date: String!
+  runtime: String!
+  poster_path: String!
 }
 type Query {
   trending: [Movie]
