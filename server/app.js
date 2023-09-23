@@ -1,12 +1,23 @@
-const express = require('express')
-const graphqlHTTP = require('express-graphql')
-const schema = require('./schema/schema')
-const cors = require('cors')
-require('dotenv').config()
-const port = process.env.PORT || 4000
-const app = express()
-// app.use(cors())
-app.use('/graphql', cors(), graphqlHTTP({ schema, graphiql: true }))
-app.listen(port, () => {
-  console.log(`listening on port ${port}`)
-})
+const { startServerAndCreateLambdaHandler, handlers } = require('@as-integrations/aws-lambda') ;
+const { ApolloServer } = require('@apollo/server')
+const Movie = require('./models/movie')
+const{ readFileSync } = require('fs')
+const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' })
+
+const resolvers = {
+  Query: {
+    trending: () =>  Movie.trending()
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+// This final export is important!
+
+exports.graphqlHandler = startServerAndCreateLambdaHandler(
+  server,
+  handlers.createAPIGatewayProxyEventRequestHandler(),
+);
