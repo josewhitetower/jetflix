@@ -61,7 +61,7 @@ plugins:
   - serverless-plugin-typescript
   - serverless-offline
 functions:
-  app:
+  graphqlHandler:
     handler: app.graphqlHandler
     events:
       - httpApi:
