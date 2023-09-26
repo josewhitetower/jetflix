@@ -11,6 +11,16 @@ type Movie {
   original_language: String!
   trailer: String
   cast: [Person!]!
+  genre_ids: [Genre!]!
+  genres: [Genre]
+}
+
+type Genre {
+  id: Int!
+  name: String!
+  page: Int!
+  total_pages: String!
+  movies: [Movie!]!
 }
 
 type Person {
@@ -22,11 +32,12 @@ type Person {
 }
 
 type Search {
-  results: [Movie!]
+  results: [Movie]!
   page: Int!
   total_pages: Int!
 }
 
 type Query {
-  trending: [Movie]
+  trending: [Movie!]!
+  movie(id: Int!): Movie
 }

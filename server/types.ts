@@ -14,9 +14,20 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Genre = {
+  __typename?: 'Genre';
+  id: Scalars['Int']['output'];
+  movies: Array<Movie>;
+  name: Scalars['String']['output'];
+  page: Scalars['Int']['output'];
+  total_pages: Scalars['String']['output'];
+};
+
 export type Movie = {
   __typename?: 'Movie';
   cast: Array<Person>;
+  genre_ids: Array<Genre>;
+  genres?: Maybe<Array<Maybe<Genre>>>;
   homepage: Scalars['String']['output'];
   id: Scalars['String']['output'];
   original_language: Scalars['String']['output'];
@@ -41,12 +52,18 @@ export type Person = {
 
 export type Query = {
   __typename?: 'Query';
-  trending?: Maybe<Array<Maybe<Movie>>>;
+  movie?: Maybe<Movie>;
+  trending: Array<Movie>;
+};
+
+
+export type QueryMovieArgs = {
+  id: Scalars['Int']['input'];
 };
 
 export type Search = {
   __typename?: 'Search';
   page: Scalars['Int']['output'];
-  results?: Maybe<Array<Movie>>;
+  results: Array<Maybe<Movie>>;
   total_pages: Scalars['Int']['output'];
 };
