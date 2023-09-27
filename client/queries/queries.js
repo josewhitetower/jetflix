@@ -11,7 +11,7 @@ const getTrendingQuery = gql`
 `
 
 const searchQuery = gql`
-  query search($query: String!, $page: Int!) {
+  query search($query: String!, $page: Int) {
     search(query: $query, page: $page) {
       page
       total_pages
