@@ -7,7 +7,7 @@
     >
       {{ notification.message }}
     </div>
-    <Search v-if="user" />
+    <Search />
     <nuxt />
     <footer class="absolute bottom-0 py-4 text-center text-sm w-full">
       Powered by

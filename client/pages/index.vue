@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="mb-10 transform z-20 pb-3 hidden md:block">
-      <div class="flex flex-wrap" v-if="user">
+      <div class="flex flex-wrap">
         <nuxt-link
           v-for="genre in genres"
           :key="genre.id"
