@@ -84,7 +84,7 @@ export default {
     search: {
       query: searchQuery,
       variables() {
-        return { query: this.querySearch, page: Number(this.$route.query.page) }
+        return { query: this.querySearch, page: Number(this.$route.query.page) ?? 1 }
       },
       result(value) {
         this.moviesList = value.data.search.results

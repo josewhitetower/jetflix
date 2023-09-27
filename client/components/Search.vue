@@ -28,7 +28,8 @@
 <script>
 export default {
   data: () => ({
-    query: ''
+    query: '',
+    page: 1
   }),
   watch: {
     query(prev) {
@@ -41,7 +42,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$router.push({ path: '/', query: { search: this.query }, page: 1})
+      this.$router.push({ path: '/', query: { search: this.query, page: this.page }})
     }
   }
 }
