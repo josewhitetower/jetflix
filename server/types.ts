@@ -16,7 +16,7 @@ export type Scalars = {
 
 export type Genre = {
   __typename?: 'Genre';
-  id: Scalars['Int']['output'];
+  id: Scalars['ID']['output'];
   movies: Array<Movie>;
   name: Scalars['String']['output'];
   page: Scalars['Int']['output'];
@@ -29,7 +29,7 @@ export type Movie = {
   genre_ids: Array<Genre>;
   genres?: Maybe<Array<Maybe<Genre>>>;
   homepage: Scalars['String']['output'];
-  id: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
   original_language: Scalars['String']['output'];
   overview: Scalars['String']['output'];
   poster_path: Scalars['String']['output'];
@@ -45,20 +45,35 @@ export type Person = {
   __typename?: 'Person';
   cast_id: Scalars['String']['output'];
   character: Scalars['String']['output'];
-  id: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
   profile_path: Scalars['String']['output'];
 };
 
 export type Query = {
   __typename?: 'Query';
+  genre?: Maybe<Genre>;
+  genres: Array<Genre>;
   movie?: Maybe<Movie>;
+  search?: Maybe<Search>;
   trending: Array<Movie>;
 };
 
 
+export type QueryGenreArgs = {
+  id: Scalars['ID']['input'];
+  page: Scalars['Int']['input'];
+};
+
+
 export type QueryMovieArgs = {
-  id: Scalars['Int']['input'];
+  id: Scalars['ID']['input'];
+};
+
+
+export type QuerySearchArgs = {
+  page?: InputMaybe<Scalars['Int']['input']>;
+  query: Scalars['String']['input'];
 };
 
 export type Search = {

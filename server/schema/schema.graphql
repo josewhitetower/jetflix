@@ -1,5 +1,5 @@
 type Movie {
-  id: String!
+  id: ID!
   title: String!
   overview: String!
   tagline: String!
@@ -16,7 +16,7 @@ type Movie {
 }
 
 type Genre {
-  id: Int!
+  id: ID!
   name: String!
   page: Int!
   total_pages: String!
@@ -24,7 +24,7 @@ type Genre {
 }
 
 type Person {
-  id: String!
+  id: ID!
   cast_id: String!
   character: String!
   name: String!
@@ -39,5 +39,8 @@ type Search {
 
 type Query {
   trending: [Movie!]!
-  movie(id: Int!): Movie
+  movie(id: ID!): Movie
+  genres: [Genre!]!
+  genre(id: ID!, page: Int!): Genre
+  search(query: String!, page: Int): Search
 }

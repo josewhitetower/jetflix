@@ -12,8 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@apollo/server": "^4.9.3",
-    "@as-integrations/aws-lambda": "^3.1.0",
+    "apollo-server-lambda": "^3.12.1",
     "axios": "^1.5.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -22,6 +21,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.0",
     "@graphql-codegen/typescript": "4.0.1",
+    "@types/cors": "^2.8.14",
     "@types/node": "^20.6.3",
     "nodemon": "^2.0.4",
     "serverless-offline": "^13.0.0",

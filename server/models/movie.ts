@@ -1,4 +1,4 @@
-import { Genre, Movie, Person } from '../types'
+import { Genre, Movie, Person, Search } from '../types'
 
 const axios = require('../axios/axios')
 const MovieModel = {
@@ -54,13 +54,11 @@ const MovieModel = {
       .catch((error: Error) => console.log(error))
   },
 
-  search: (query: string, page = 1) => {
+  search: (query?: string, page: number | undefined | null = 1) => {
     const creditsUrl = `search/movie?query=${query}&page=${page}`
     return axios
       .get(creditsUrl)
-      .then((response: { data: Movie[] }) => {
-        return response.data
-      })
+      .then((response: { data: Search }) => response.data)
       .catch((error: Error) => console.log(error))
   },
 }

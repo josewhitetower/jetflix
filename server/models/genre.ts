@@ -1,6 +1,6 @@
+import axios from '../axios/axios'
 import { Genre } from '../types'
 
-const axios = require('../axios/axios')
 const GenreModel = {
   findAll: () => {
     const movieUrl = `/genre/movie/list`
@@ -9,12 +9,12 @@ const GenreModel = {
       .then((response: { data: { genres: Genre[] } }) => response.data.genres)
       .catch((error: Error) => ({ error: error }))
   },
-  findById: (genreId: unknown, page: number) => {
+  findById: (genreId: number, page: number) => {
     const movieUrl = `/genre/movie/list`
     return axios
       .get(movieUrl)
       .then((response: { data: { genres: Genre[] } }) => {
-        const genre = response.data.genres.find((genre) => genre.id == genreId)
+        const genre = response.data.genres.filter((genre) => +genre.id == genreId)[0]
         if (genre) {
           genre.page = page
         }
