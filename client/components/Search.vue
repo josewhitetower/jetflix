@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$router.push({ path: '/', query: { search: this.query }, page: 1 })
+      this.$router.push({ path: '/', query: { search: this.query }, page: 1})
     }
   }
 }
