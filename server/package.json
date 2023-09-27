@@ -23,7 +23,7 @@
     "@graphql-codegen/typescript": "4.0.1",
     "@types/cors": "^2.8.14",
     "@types/node": "^20.6.3",
-    "nodemon": "^2.0.4",
+    "nodemon": "^3.0.1",
     "serverless-offline": "^13.0.0",
     "serverless-plugin-typescript": "^2.1.5",
     "typescript": "^5.2.2"
