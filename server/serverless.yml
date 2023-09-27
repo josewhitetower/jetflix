@@ -25,6 +25,10 @@ provider:
   runtime: nodejs18.x
   stage: dev
   region: eu-central-1
+  environment: # store at serverless config
+    API_KEY: ${param:API_KEY}
+    API_TOKEN: ${param:API_TOKEN}
+    API_URL: ${param:API_URL}
 
 # you can overwrite defaults here
 
@@ -51,12 +55,9 @@ provider:
 #    variable1: value1
 
 # you can add packaging information here
-#package:
-#  patterns:
-#    - '!exclude-me.js'
-#    - '!exclude-me-dir/**'
-#    - include-me.js
-#    - include-me-dir/**
+package:
+  patterns:
+    - schema/**
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
@@ -67,7 +68,6 @@ functions:
       - httpApi:
           path: /graphql
           method: post
-          cors: true
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details

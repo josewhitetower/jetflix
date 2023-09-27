@@ -8,7 +8,7 @@ import GenreModel from './models/genre'
 import { readFileSync } from 'fs'
 import type { Genre, Movie, QueryMovieArgs, Scalars } from './types'
 
-const typeDefs = readFileSync('./schema.graphql', { encoding: 'utf-8' })
+const typeDefs = readFileSync('./schema/schema.graphql', { encoding: 'utf-8' })
 
 const resolvers = {
   Movie: {
