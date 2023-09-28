@@ -8,6 +8,18 @@
       {{ notification.message }}
     </div>
     <Search />
+    <div class="mb-10 transform z-20 pb-3 hidden md:block">
+      <div class="flex flex-wrap">
+        <nuxt-link
+          v-for="genre in genres"
+          :key="genre.id"
+          :to="`/genre/${genre.id}`"
+          :title="genre.name"
+          class="mr-2 rounded px-3 py-2 mb-1 text-sm bg-gray-900 hover:bg-gray-700 transition duration-300 ease-in-out"
+          >{{ genre.name }}</nuxt-link
+        >
+      </div>
+    </div>
     <nuxt />
     <footer class="absolute bottom-0 py-4 text-center text-sm w-full">
       Powered by
@@ -27,6 +39,7 @@
 import { mapGetters } from 'vuex'
 import Search from '@/components/Search.vue'
 import Navigation from '@/components/Navigation.vue'
+import { genresQuery } from '@/queries/queries'
 export default {
   components: {
     Search,
@@ -37,6 +50,11 @@ export default {
       user: 'user',
       notification: 'notification'
     })
+  },
+  apollo: {
+    genres: {
+      query: genresQuery
+    },
   }
 }
 </script>
