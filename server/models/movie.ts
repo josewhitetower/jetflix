@@ -1,32 +1,41 @@
 import { Genre, Movie, Person, Search } from '../types'
 
-const axios = require('../axios/axios')
+import axios from '../axios/axios'
 const MovieModel = {
-  trending: (): Movie[] => {
+  trending: async () => {
     const trendingUrl = `/trending/movie/day`
-    return axios
-      .get(trendingUrl)
-      .then((response: { data: { results: Movie[] } }) => response.data.results)
-      .catch((error: Error) => ({ error: error }))
+    try {
+      const response = await axios
+        .get(trendingUrl)
+      return response.data.results
+    } catch (error) {
+      return ({ error: error })
+    }
   },
 
-  findById: (movieId: number) => {
+  findById: async (movieId: number) => {
     const movieUrl = `/movie/${movieId}`
-    return axios
-      .get(movieUrl)
-      .then((response: { data: Movie }) => response.data)
-      .catch((error: Error) => ({ error: error }))
+    try {
+      const response = await axios
+        .get(movieUrl)
+      return response.data
+    } catch (error) {
+      return ({ error: error })
+    }
   },
 
-  findByGenreIdResponse: (genreId: number, page = 1) => {
+  findByGenreIdResponse: async (genreId: number, page = 1) => {
     const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
-    return axios
-      .get(discoverUrl)
-      .then((response: { data: Genre[] }) => response.data)
-      .catch((error: Error) => ({ error: error }))
+    try {
+      const response = await axios
+        .get(discoverUrl)
+      return response.data
+    } catch (error) {
+      return ({ error: error })
+    }
   },
 
-  getTrailerVideo: (movieId: string) => {
+  getTrailerVideo: async (movieId: string) => {
     const trailerVideoUrl = `/movie/${movieId}/videos`
     return axios
       .get(trailerVideoUrl)
@@ -42,7 +51,7 @@ const MovieModel = {
       .catch((error: Error) => console.log(error))
   },
 
-  getCast: (movieId: string) => {
+  getCast: async (movieId: string) => {
     const creditsUrl = `/movie/${movieId}/credits`
     return axios
       .get(creditsUrl)
@@ -54,7 +63,7 @@ const MovieModel = {
       .catch((error: Error) => console.log(error))
   },
 
-  search: (query?: string, page: number | undefined | null = 1) => {
+  search: async (query?: string, page: number | undefined | null = 1) => {
     const creditsUrl = `search/movie?query=${query}&page=${page}`
     return axios
       .get(creditsUrl)

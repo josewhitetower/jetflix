@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "lint": "eslint . --ext .ts"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,9 @@
     "@graphql-codegen/typescript": "4.0.1",
     "@types/cors": "^2.8.14",
     "@types/node": "^20.6.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "^8.50.0",
     "nodemon": "^3.0.1",
     "serverless-offline": "^13.0.0",
     "serverless-plugin-typescript": "^2.1.5",

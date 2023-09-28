@@ -1,5 +1,7 @@
-const axios = require('axios')
-require('dotenv').config({ path: './.env' })
+import axios from 'axios'
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './.env' });
 const instance = axios.create({
   baseURL: process.env.API_URL,
   headers: {
@@ -10,4 +12,4 @@ const instance = axios.create({
   }
 })
 
-module.exports = instance
+export default instance

@@ -21,13 +21,13 @@ const resolvers = {
     },
     trailer: (parent: Movie) => MovieModel.getTrailerVideo(parent.id),
     cast: (parent: Movie) => MovieModel.getCast(parent.id),
-    genre_ids: (parent: Movie): Genre[] =>
+    genre_ids: (parent: Movie) =>
       parent.genre_ids.map((genre) => GenreModel.findById(Number(genre), 1)),
   },
   Genre: {
     page: (parent: Genre) =>
       MovieModel.findByGenreIdResponse(+parent.id, parent.page).then(
-        (response: { page: Scalars['Int'] }) => response.page
+        (response) => response.page
       ),
     total_pages: (parent: Genre) =>
       MovieModel.findByGenreIdResponse(+parent.id, parent.page).then(
@@ -35,19 +35,17 @@ const resolvers = {
       ),
     movies: (parent: Genre) =>
       MovieModel.findByGenreIdResponse(+parent.id, parent.page).then(
-        (response: { results: Movie[] }) => response.results
+        (response) => response.results
       ),
   },
   Query: {
-    trending: (): Movie[] => MovieModel.trending(),
+    trending: () => MovieModel.trending(),
     movie: (_: never, args: QueryMovieArgs) => MovieModel.findById(+args.id),
-    genres: (): Genre[] => GenreModel.findAll(),
-    genre: (_: never, args: QueryGenreArgs): Genre =>
+    genres: () => GenreModel.findAll(),
+    genre: (_: never, args: QueryGenreArgs) =>
       GenreModel.findById(+args.id, args.page),
     search: (_: never, args: QuerySearchArgs) =>
-      MovieModel.search(args.query, args.page).then(
-        (response: Search) => response
-      ),
+      MovieModel.search(args.query, args.page).then((response) => response),
   },
 }
 
