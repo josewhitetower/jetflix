@@ -1,6 +1,5 @@
 ## jetflix
 
-[![Build Status](https://travis-ci.com/josewhitetower/jetflix.svg?branch=master)](https://travis-ci.com/josewhitetower/jetflix)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/2930c7d4-db14-464e-9e5e-80dbe6d056cd/deploy-status)](https://app.netlify.com/sites/jt-jetflix/deploys)
 
 Jetflix web application that consumes movies from The Movie Database (TMDb) through a GraphQL server. It allows authenticated users to search, bookmark and save movies as favorites. Frontend deployed usign the Netlify platform CLI (it's never been easier) and Backend deployed and hosted on Heroku.
