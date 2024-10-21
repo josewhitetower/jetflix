@@ -1,37 +1,35 @@
-import { Genre, Movie, Person, Search } from '../types'
+import { Person, Search } from '../types'
 
 import axios from '../axios/axios'
 const MovieModel = {
   trending: async () => {
     const trendingUrl = `/trending/movie/day`
     try {
-      const response = await axios
-        .get(trendingUrl)
+      const response = await axios.get(trendingUrl)
       return response.data.results
     } catch (error) {
-      return ({ error: error })
+      return { error: error }
     }
   },
 
   findById: async (movieId: number) => {
     const movieUrl = `/movie/${movieId}`
     try {
-      const response = await axios
-        .get(movieUrl)
+      const response = await axios.get(movieUrl)
+
       return response.data
     } catch (error) {
-      return ({ error: error })
+      return { error: error }
     }
   },
 
   findByGenreIdResponse: async (genreId: number, page = 1) => {
-    const discoverUrl = `/discover/movie/?with_genres=${genreId}&page=${page}`
+    const discoverUrl = `/discover/movie?with_genres=${genreId}&page=${page}`
     try {
-      const response = await axios
-        .get(discoverUrl)
+      const response = await axios.get(discoverUrl)
       return response.data
     } catch (error) {
-      return ({ error: error })
+      return { error: error }
     }
   },
 

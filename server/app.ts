@@ -9,7 +9,6 @@ import type {
   QueryMovieArgs,
   QuerySearchArgs,
   Scalars,
-  Search,
 } from './types'
 
 const typeDefs = readFileSync('./schema/schema.graphql', { encoding: 'utf-8' })
