@@ -25,6 +25,11 @@ provider:
   runtime: nodejs18.x
   stage: dev
   region: eu-central-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: arn:aws:lambda:eu-central-1:132733459232:function:server-dev-graphqlHandler
   environment: # store at serverless config
     API_KEY: ${param:API_KEY}
     API_TOKEN: ${param:API_TOKEN}
