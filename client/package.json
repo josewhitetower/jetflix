@@ -5,7 +5,7 @@
   "author": "Torreblanca, Jose",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"nuxt\" \"cd ../server && npm run dev\"",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "concurrently \"nuxt\" \"cd ../server && npm run start\"",
     "generate": "nuxt generate",

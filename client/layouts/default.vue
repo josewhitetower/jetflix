@@ -54,7 +54,7 @@ export default {
   apollo: {
     genres: {
       query: genresQuery
-    },
+    }
   }
 }
 </script>
