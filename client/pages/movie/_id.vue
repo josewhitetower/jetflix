@@ -25,7 +25,7 @@
               <div
                 class="h-10 w-10 flex items-center justify-center rounded-full block text-base border-2 flex-shrink-0"
               >
-                {{ data.movie.vote_average }}
+                {{ data.movie.vote_average.toFixed(1) }}
               </div>
             </h1>
             <span
