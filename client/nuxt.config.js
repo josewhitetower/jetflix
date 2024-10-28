@@ -136,5 +136,8 @@ export default {
   purgeCSS: {
     mode: 'postcss',
     whitelistPatterns: [/(^|\.)fa-/, /-fa($|\.)/]
-  }
+  },
+  router: {
+    linkActiveClass: 'bg-gray-700',
+    linkExactActiveClass: 'bg-gray-700',}
 }
