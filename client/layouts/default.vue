@@ -16,7 +16,7 @@
           :to="`/genre/${genre.id}`"
           :title="genre.name"
           class="mr-2 rounded px-3 py-2 mb-1 text-sm hover:bg-gray-700 transition duration-300 ease-in-out"
-          :class="genre.id === $route.params.id ? 'bg-gray-700' : ''"
+          :class="{ 'bg-gray-700': genre.id === $route.params.id }"
           >{{ genre.name }}</nuxt-link
         >
       </div>
