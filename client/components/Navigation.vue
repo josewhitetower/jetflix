@@ -37,22 +37,7 @@
         >Genres</nuxt-link
       >
     </div>
-    <div class="flex" v-if="!user">
-      <nuxt-link to="/signup" class="cursor-pointer mr-3">
-        <span title="Sign up">
-          <span class="hidden lg:inline">Sign up</span>
-          <font-awesome-icon
-            :icon="['fas', 'user-plus']"
-            class="lg:hidden"
-          /> </span
-      ></nuxt-link>
-      <nuxt-link to="/signin" class="cursor-pointer mr-3">
-        <span title="Sign in">
-          <span class="hidden lg:inline">Sign in</span>
-          <font-awesome-icon :icon="['fas', 'sign-in-alt']" class="lg:hidden" />
-        </span>
-      </nuxt-link>
-    </div>
+    <div class="flex" v-if="!user"></div>
     <div v-if="user" class="relative">
       <span
         class="cursor-pointer mr-3"
