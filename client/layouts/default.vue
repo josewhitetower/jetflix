@@ -40,7 +40,7 @@
 import { mapGetters } from 'vuex'
 import Search from '@/components/Search.vue'
 import Navigation from '@/components/Navigation.vue'
-import { genresQuery } from '@/queries/queries'
+import { genresQuery } from '~/queries/queries'
 export default {
   components: {
     Search,

@@ -39,7 +39,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/lazysizes.client.js'
+    '~/plugins/lazysizes.client.ts'
     // { src: '~/plugins/vuex-persist', ssr: false }
   ],
   /*
@@ -137,5 +137,4 @@ export default {
     mode: 'postcss',
     whitelistPatterns: [/(^|\.)fa-/, /-fa($|\.)/]
   },
-  
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <ApolloQuery
-      :query="require('@/queries/queries').genreQuery"
+      :query="require('~/queries/queries').genreQuery"
       :variables="{ id: $route.params.id, page: page }"
       @result="onResult"
     >

@@ -1,6 +1,6 @@
 <template>
   <ApolloQuery
-    :query="require('@/queries/queries').movieQuery"
+    :query="require('~/queries/queries').movieQuery"
     :variables="{ id: $route.params.id }"
     @result="onResult"
   >

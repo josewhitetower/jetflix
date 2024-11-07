@@ -1,25 +1,26 @@
-const graphql = require('graphql')
-const Movie = require('../models/movie')
-const Genre = require('../models/genre')
-const {
+import {
   GraphQLObjectType,
-  GraphQLList,
-  GraphQLSchema,
   GraphQLString,
-  GraphQLID,
+  GraphQLInt,
+  GraphQLList,
   GraphQLFloat,
-  GraphQLInt
-} = graphql
+  GraphQLID,
+  GraphQLSchema,
+} from 'graphql'
 
-const findGenres = (parent) => {
+import MovieModel from '../models/movie'
+import GenreModel from '../models/genre'
+import { Genre, Movie } from '../types'
+
+const findGenres = (parent: Movie) => {
   const { genre_ids, genres } = parent
   if (genres) {
-    return genres.map((genre) => Genre.findById(genre.id))
+    return genres.map((genre) => GenreModel.findById(Number(genre?.id)))
   }
-  return genre_ids.map((genreId) => Genre.findById(genreId))
+  return genre_ids.map((genreId) => GenreModel.findById(+genreId))
 }
 
-const runtimeConvert = (runtime) => {
+const runtimeConvert = (runtime: number) => {
   const hours = runtime / 60
   const rHours = Math.floor(hours)
   const minutes = (hours - rHours) * 60
@@ -27,7 +28,7 @@ const runtimeConvert = (runtime) => {
   return `${rHours}:${rMinutes < 10 ? `0${rMinutes}` : rMinutes}`
 }
 
-const MovieType = new GraphQLObjectType({
+const MovieType: GraphQLObjectType = new GraphQLObjectType({
   name: 'Movie',
   fields: () => ({
     id: { type: GraphQLID },
@@ -39,7 +40,7 @@ const MovieType = new GraphQLObjectType({
         if (parent.poster_path) {
           return `https://image.tmdb.org/t/p/w500${parent.poster_path}`
         }
-      }
+      },
     },
     tagline: { type: GraphQLString },
     vote_average: { type: GraphQLFloat },
@@ -48,35 +49,35 @@ const MovieType = new GraphQLObjectType({
       type: GraphQLString,
       resolve: (parent) => {
         return parent.runtime ? runtimeConvert(parent.runtime) : ''
-      }
+      },
     },
     trailer: {
       type: GraphQLString,
       resolve: (parent) => {
-        return Movie.getTrailerVideo(parent.id)
-      }
+        return MovieModel.getTrailerVideo(parent.id)
+      },
     },
     cast: {
       type: new GraphQLList(PersonType),
       resolve: (parent) => {
-        return Movie.getCast(parent.id)
-      }
+        return MovieModel.getCast(parent.id)
+      },
     },
     homepage: { type: GraphQLString },
     original_language: { type: GraphQLString },
     genre_ids: {
       type: new GraphQLList(GenreType),
-      resolve: (parent, args) => {
+      resolve: (parent) => {
         return findGenres(parent)
-      }
+      },
     },
     genres: {
       type: new GraphQLList(GenreType),
-      resolve: (parent, args) => {
+      resolve: (parent) => {
         return findGenres(parent)
-      }
-    }
-  })
+      },
+    },
+  }),
 })
 
 const GenreType = new GraphQLObjectType({
@@ -87,28 +88,30 @@ const GenreType = new GraphQLObjectType({
     page: {
       type: GraphQLInt,
       resolve: (parent) => {
-        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
-          (response) => response.page
-        )
-      }
+        return MovieModel.findByGenreIdResponse(
+          Number(parent.id),
+          parent.page
+        ).then((response) => response.page)
+      },
     },
     total_pages: {
       type: GraphQLInt,
-      resolve: (parent) => {
-        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
-          (response) => response.total_pages
-        )
-      }
+      resolve: (parent: Genre) => {
+        return MovieModel.findByGenreIdResponse(
+          Number(parent.id),
+          parent.page
+        ).then((response) => response.total_pages)
+      },
     },
     movies: {
       type: new GraphQLList(MovieType),
-      resolve: (parent, args) => {
-        return Movie.findByGenreIdResponse(parent.id, parent.page).then(
+      resolve: (parent) => {
+        return MovieModel.findByGenreIdResponse(+parent.id, parent.page).then(
           (response) => response.results
         )
-      }
-    }
-  })
+      },
+    },
+  }),
 })
 
 const PersonType = new GraphQLObjectType({
@@ -118,8 +121,8 @@ const PersonType = new GraphQLObjectType({
     cast_id: { type: GraphQLID },
     character: { type: GraphQLString },
     name: { type: GraphQLString },
-    profile_path: { type: GraphQLString }
-  })
+    profile_path: { type: GraphQLString },
+  }),
 })
 
 const SearchType = new GraphQLObjectType({
@@ -129,25 +132,25 @@ const SearchType = new GraphQLObjectType({
       type: new GraphQLList(MovieType),
       args: {
         query: { type: GraphQLString },
-        page: { type: GraphQLInt }
+        page: { type: GraphQLInt },
       },
-      resolve: (parent, args) => {
+      resolve: (parent) => {
         return parent.results
-      }
+      },
     },
     page: {
       type: GraphQLInt,
-      resolve: (parent, args) => {
+      resolve: (parent) => {
         return parent.page
-      }
+      },
     },
     total_pages: {
       type: GraphQLInt,
-      resolve: (parent, args) => {
+      resolve: (parent) => {
         return parent.total_pages
-      }
-    }
-  })
+      },
+    },
+  }),
 })
 
 const RootQuery = new GraphQLObjectType({
@@ -156,47 +159,49 @@ const RootQuery = new GraphQLObjectType({
     trending: {
       type: new GraphQLList(MovieType),
       resolve() {
-        return Movie.trending()
-      }
+        return MovieModel.trending()
+      },
     },
     movie: {
       type: MovieType,
       args: {
-        id: { type: GraphQLID }
+        id: { type: GraphQLID },
       },
-      resolve: (parent, args) => {
-        return Movie.findById(args.id)
-      }
+      resolve: (_, args) => {
+        return MovieModel.findById(args.id)
+      },
     },
     genres: {
       type: new GraphQLList(GenreType),
       resolve: () => {
-        return Genre.findAll()
-      }
+        return GenreModel.findAll()
+      },
     },
     genre: {
       type: GenreType,
       args: {
         id: { type: GraphQLID },
-        page: { type: GraphQLInt }
+        page: { type: GraphQLInt },
       },
       resolve: (parent, args) => {
-        return Genre.findById(args.id, args.page)
-      }
+        return GenreModel.findById(args.id, args.page)
+      },
     },
     search: {
       type: SearchType,
       args: {
         query: { type: GraphQLString },
-        page: { type: GraphQLInt }
+        page: { type: GraphQLInt },
       },
-      resolve: (parent, args) => {
-        return Movie.search(args.query, args.page).then((response) => response)
-      }
-    }
-  }
+      resolve: (_, args) => {
+        return MovieModel.search(args.query, args.page).then(
+          (response) => response
+        )
+      },
+    },
+  },
 })
 
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
 })

@@ -11,7 +11,7 @@ const GenreModel = {
       return { error: error }
     }
   },
-  findById: async (genreId: number, page: number) => {
+  findById: async (genreId: number, page?: number) => {
     const movieUrl = `/genre/movie/list`
     try {
       const response = await axios.get(movieUrl)

@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { genresQuery } from '@/queries/queries'
+import { genresQuery } from '~/queries/queries'
 export default {
   head() {
     return {

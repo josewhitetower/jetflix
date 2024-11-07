@@ -17,7 +17,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { getTrendingQuery, searchQuery, genresQuery } from '@/queries/queries'
+import { getTrendingQuery, searchQuery, genresQuery } from '~/queries/queries'
 import MoviesList from '@/components/MoviesList.vue'
 import Pagination from '@/components/Pagination.vue'
 
